@@ -20,6 +20,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{rotating, multirow}
+\usepackage{colortbl}
 
 % Avoid non breaking words
 
@@ -663,7 +664,7 @@ was 100 days long, and a multi-layered Long Short-Term Memory (LSTM)
 recurrent network was used. Our prediction approach differs by
 learning not only from the demographics (fixed data for each city) and
 time-dependent data but by integrating the population model for the
-underlying prediction, as shown in Fig. \ref{fig:magic-1}. Such model
+underlying prediction, as shown in Figure \ref{fig:magic-1}. Such model
 predictive integration capability is important in any application with
 multiple time scales. For example, this allows us to integrate
 multi-scale time effects into the forecast, which could address the
@@ -833,54 +834,54 @@ many of these factors perform better on average.
 \label{tab:top-1}
 \bigskip
 \centering
-\resizebox{1.0\textwidth}{!}{ 
+%\resizebox{1.0\textwidth}{!}{ 
 \begin{tabular}{rrrrrlrl}
 \toprule
- \makecell{RMSE\\Cases} &  
+ \makecell{Place/\\Rank} & 
+\makecell{Risk Factor} &  
+\makecell{RMSE\\Cases} &  
  \makecell{RMSE\\Death} &  
- \makecell[r]{Cummulative \\Error \\Cases} &  
- \makecell[r]{Cummulative \\Error \\Death} &  
- \makecell[r]{Number of \\Days as \\Input} & 
- \makecell{Risk Factor} &  
- \makecell{Place/\\Rank} & \\
+ \makecell[r]{Cumu-\\lative \\Error \\Cases} &  
+ \makecell[r]{Cumu-\\lative \\Error \\Death} &  
+ \makecell[r]{Number of \\Days as \\Input} \\
 \midrule
- 0.055443 & 0.067617 & 7.94 & 22.74 & 5 & POP\_DENSITY\_2010 & 0 \\
- 0.054795 & 0.068529 & 8.01 & 20.55 & 3 & PHLTH & 1 \\
- 0.055199 & 0.067641 & 8.07 & 20.43 & 4 & INSURANCE & 2 \\
- 0.055028 & 0.067207 & 8.12 & 20.17 & 4 & PERCENTBLACKS & 3 \\
- 0.056061 & 0.067489 & 8.22 & 19.04 & 5 & PERCENTHISPANICS & 4 \\
- 0.054621 & 0.068255 & 8.26 & 20.10 & 3 & NHOSP & 5 \\
- 0.054557 & 0.068572 & 8.34 & 24.61 & 3 & INSURANCE & 6 \\
- 0.054712 & 0.069121 & 8.37 & 21.70 & 3 & CHOLSCREEN & 7 \\
- 0.054586 & 0.067636 & 8.40 & 20.50 & 5 & DIABETES & 8 \\
- 0.054160 & 0.066906 & 8.45 & 20.16 & 4 & STROKE & 9 \\
- 0.054027 & 0.067642 & 8.46 & 21.93 & 5 & CHD & 10 \\
- 0.054927 & 0.067652 & 8.51 & 20.42 & 5 & CHECKUP & 11 \\
- 0.054146 & 0.067536 & 8.54 & 21.15 & 5 & NBEDS & 12 \\
- 0.054795 & 0.067676 & 8.58 & 19.94 & 5 & SVI\_OVERALL & 13 \\
- 0.054600 & 0.067565 & 8.61 & 21.86 & 5 & KIDNEY & 14 \\
- 0.055089 & 0.068248 & 8.63 & 22.58 & 5 & CASTHMA & 15 \\
- 0.054547 & 0.068266 & 8.68 & 20.49 & 3 & BLACK & 16 \\
- 0.054685 & 0.068920 & 8.74 & 21.69 & 3 & BPMED & 17 \\
- 0.054323 & 0.067149 & 8.75 & 19.54 & 5 & LPA & 18 \\
- 0.053716 & 0.066898 & 8.75 & 19.01 & 5 & CSMOKING & 19 \\
- 0.054053 & 0.068716 & 8.83 & 20.94 & 3 & ARTHRITIS & 20 \\
- 0.055029 & 0.068672 & 8.84 & 22.02 & 3 & POVERTY & 21 \\
- 0.054545 & 0.067267 & 8.86 & 21.22 & 4 & ESTBEDS & 22 \\
- 0.054864 & 0.068742 & 8.90 & 19.53 & 3 & MHLTH & 23 \\
- 0.055079 & 0.069024 & 8.93 & 21.23 & 3 & SENIOR & 24 \\
- 0.055589 & 0.068250 & 8.93 & 23.26 & 4 & COPD & 25 \\
- 0.054500 & 0.068363 & 8.99 & 19.70 & 3 & CANCER & 26 \\
- 0.054397 & 0.068491 & 9.05 & 21.89 & 3 & NBEDS/1000 & 27 \\
- 0.054609 & 0.067346 & 9.13 & 21.29 & 4 & BPHIGH & 28 \\
-\rowcolor{black!5}  0.054868 & 0.069432 & 9.26 & 25.88 & 3 & NONE & 29 \\
- 0.056429 & 0.069345 & 9.28 & 20.98 & 3 & HIGHCHOL & 30 \\
- 0.054317 & 0.067638 & 9.32 & 21.00 & 5 & BINGE & 31 \\
- 0.054469 & 0.068540 & 9.50 & 20.65 & 3 & OBESITY & 32 \\
- 0.055094 & 0.067443 & 9.54 & 21.53 & 4 & SVI\_MINORITY & 33 \\
+1 & POP\_DENSITY\_2010 & 0.055443 & 0.067617 & 7.94 & 22.74 & 5 \\
+2 & PHLTH & 0.054795 & 0.068529 & 8.01 & 20.55 & 3 \\
+3 & INSURANCE & 0.055199 & 0.067641 & 8.07 & 20.43 & 4 \\
+4 & PERCENTBLACKS & 0.055028 & 0.067207 & 8.12 & 20.17 & 4 \\
+5 & PERCENTHISPANICS & 0.056061 & 0.067489 & 8.22 & 19.04 & 5 \\
+6 & NHOSP & 0.054621 & 0.068255 & 8.26 & 20.10 & 3 \\
+7 & INSURANCE & 0.054557 & 0.068572 & 8.34 & 24.61 & 3 \\
+8 & CHOLSCREEN & 0.054712 & 0.069121 & 8.37 & 21.70 & 3 \\
+9 & DIABETES & 0.054586 & 0.067636 & 8.40 & 20.50 & 5 \\
+10 & STROKE & 0.054160 & 0.066906 & 8.45 & 20.16 & 4 \\
+11 & CHD & 0.054027 & 0.067642 & 8.46 & 21.93 & 5 \\
+12 & CHECKUP & 0.054927 & 0.067652 & 8.51 & 20.42 & 5 \\
+13 & NBEDS & 0.054146 & 0.067536 & 8.54 & 21.15 & 5 \\
+14 & SVI\_OVERALL & 0.054795 & 0.067676 & 8.58 & 19.94 & 5 \\
+15 & KIDNEY & 0.054600 & 0.067565 & 8.61 & 21.86 & 5 \\
+16 & CASTHMA & 0.055089 & 0.068248 & 8.63 & 22.58 & 5 \\
+17 & BLACK & 0.054547 & 0.068266 & 8.68 & 20.49 & 3 \\
+18 & BPMED & 0.054685 & 0.068920 & 8.74 & 21.69 & 3 \\
+19 & LPA & 0.054323 & 0.067149 & 8.75 & 19.54 & 5 \\
+20 & CSMOKING & 0.053716 & 0.066898 & 8.75 & 19.01 & 5 \\
+21 & ARTHRITIS & 0.054053 & 0.068716 & 8.83 & 20.94 & 3 \\
+22 & POVERTY & 0.055029 & 0.068672 & 8.84 & 22.02 & 3 \\
+23 & ESTBEDS & 0.054545 & 0.067267 & 8.86 & 21.22 & 4 \\
+24 & MHLTH & 0.054864 & 0.068742 & 8.90 & 19.53 & 3 \\
+25 & SENIOR & 0.055079 & 0.069024 & 8.93 & 21.23 & 3 \\
+26 & COPD & 0.055589 & 0.068250 & 8.93 & 23.26 & 4 \\
+27 & CANCER & 0.054500 & 0.068363 & 8.99 & 19.70 & 3 \\
+28 & NBEDS/1000 & 0.054397 & 0.068491 & 9.05 & 21.89 & 3 \\
+29 & BPHIGH & 0.054609 & 0.067346 & 9.13 & 21.29 & 4 \\
+30 & NONE &\rowcolor{black!5} 0.054868 & 0.069432 & 9.26 & 25.88 & 3 \\
+31 & HIGHCHOL & 0.056429 & 0.069345 & 9.28 & 20.98 & 3 \\
+32 & BINGE & 0.054317 & 0.067638 & 9.32 & 21.00 & 5 \\
+33 & OBESITY & 0.054469 & 0.068540 & 9.50 & 20.65 & 3 \\
+34 & SVI\_MINORITY & 0.055094 & 0.067443 & 9.54 & 21.53 & 4 \\
 \bottomrule
 \end{tabular}
-}
+%}
 \end{table}
 
 We observed a different scenario for deaths, in which we only
@@ -893,25 +894,23 @@ cases. To showcase this, we have included Figures
 that show the respective errors.
 
 \begin{figure}[!h]
-    \begin{minipage}{.45\textwidth}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.png}
-    \vspace{-1cm}
+    \includegraphics[width=0.5\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.png}
+    %\vspace{-1cm}
     \caption{Model prediction error for cumulative cases when
       including one risk factor - POP\_DENSITY\_2010 in the features,
       in addition to the past number of cases and deaths.}
     \label{fig:error-case-popdensity}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-    \ \
+\end{figure}
+    
+\begin{figure}[!h]    
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.png}
-    \vspace{-1cm}
+    \includegraphics[width=0.5\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.png}
+    %\vspace{-1cm}
     \caption{Model prediction error for cumulative deaths when
       including one risk factor - POP\_DENSITY\_2010 in the features,
       in addition to the past number of cases and deaths.}
     \label{fig:error-death-popdensity}
-    \end{minipage}
 \end{figure}
 
 
@@ -1025,14 +1024,10 @@ In our next comprehensive analysis, we try to answer Question
 \ref{q:4} if all risk factors impact the analysis. Thus we feed the
 covariates into the recurrent network as additional features. In
 addition to cases and deaths, this leads to 35 variables, including 33
-unique covariates. We looked at two related ways of doing this:
-
-\begin{description}
-
-\item [(a)] Have covariates fixed in time (static)
-
-\item[(b)] Multiply the covariates by the times series (we used the
-  average of cases and deaths)
+unique covariates. We looked at two related ways of doing this: (a)
+have covariates fixed in time (static), and (b) multiply the
+covariates by the times series (we used the average of cases and
+deaths)
 
 \end{description}
 
@@ -1140,10 +1135,16 @@ CASTHMA, DIABETES, and BPHIGH have small (1\%) effects.
 \caption{Correlation Matrix}
 \bigskip
 \label{tab:corr-matrix}
-\resizebox{1.0\textwidth}{!}{
+\begin{center}
 \begin{tabular}{lrrrrrr}
 \toprule
-Risk Factor		& Past Case & Now Case & Future Case & Past Death & Now Death & Future Death \\
+Risk Factor		&
+\makecell{Past\\Case} &
+\makecell{Now\\Case} &
+\makecell{Future\\Case} &
+\makecell{Past\\Death} &
+\makecell{Now\\Death} &
+\makecell{Future\\Death} \\
 \midrule
 PVI                     & -0.425      & -0.292      & -0.124      & -0.434      & -0.373      & -0.239    \\
 INSURANCE               & 0.018       & 0.017       & 0.012       & 0.018       & -0.002      & 0.001     \\
@@ -1181,7 +1182,7 @@ COPD                    & 0.163       & 0.163       & 0.153       & 0.175       
 NORM\_POP               & -0.305      & -0.258      & -0.218      & -0.193      & -0.218      & -0.099  \\
 \bottomrule
 \end{tabular}
-}
+\end{center}
 \end{table}
 
 
