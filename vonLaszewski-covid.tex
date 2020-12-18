@@ -1,91 +1,60 @@
-\documentclass[12pt]{article} 
+\documentclass[letterpaper, inpress]{jds} % use this for production
 
-\usepackage{amsfonts,amsmath,amssymb,amsthm}
-\usepackage{array}
-\usepackage{authblk}
-\usepackage{color}
-\usepackage[table]{xcolor}
-\usepackage{epsfig,fancyhdr}
-\usepackage{geometry,graphicx}
-\usepackage[]{hyperref} 
-\usepackage{indentfirst}
-\usepackage{mathtools}
-\usepackage{multirow}
-\usepackage{listings}
-\usepackage{natbib}
-\usepackage{rotating}
-\usepackage{comment}
-\usepackage{booktabs}
-\usepackage{todonotes}
-\setuptodonotes{inline}
-\usepackage{makecell}
-\usepackage{enumitem}
-\usepackage{tcolorbox}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{sectsty,secdot}
-\sectionfont{\bf\fontsize{14}{2em}\selectfont}
-\subsectionfont{\bf\fontsize{12}{2em}\selectfont}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\geometry{left=2.5cm,right=2cm,top=2.5cm,bottom=1.5cm}
-\setlength{\parindent}{0.63cm}
-
-\setcounter{page}{1}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{corollary}{Corollary}
-\newtheorem{proposition}{Proposition}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{example}{Example}
-\newtheorem{remark}{Remark}
-\pagestyle{empty}
+%\documentclass[a4paper, review]{jds}      % use this for review
 \usepackage{lineno}
-\setcitestyle{square}
-
-\newcommand*\rot{\rotatebox{90}}
-
-%---------page header---------%
-
-%\fancyhead[RO]{odd number page}
-%\fancyhead[LE]{even number page}
-
-\pagestyle{plain} 
 \linenumbers
 
-%-----------------------------%
-\newtheorem{question}{Question}
 
-\newtheorem{requirement}{Requirement}
+\usepackage{calc}
+\usepackage{comment}
 
+% color management
+
+\usepackage{color}
+\usepackage{tcolorbox}
+
+% table managemet
+
+\usepackage[table]{xcolor}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{rotating, multirow}
+
+% Avoid non breaking words
 
 \renewcommand{\_}{%
     \textunderscore\hspace{0pt}%
 }
 \setlength{\emergencystretch}{3em}
 
-\newtcolorbox{redbox}{colback=red!5!white,colframe=red!75!black,width=3cm}
-\newtcolorbox{yellowbox}{colback=yellow!5!white,colframe=yelloe!75!black,width=3cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% the following edits should be done by Journal typesetters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{1}            % set the first page number
+\jdsmonth{January}              % month
+\jdsyear{2021}                  % year
+\jdsvolume{xx}                  % volume number
+\jdsissue{xx}                   % issue number
+\jdsdoi{xx.xxxx/xxxxxxxxx}      % doi
+\jdsreceived{???, 2020}       % optional: comment it out if no received date
+\jdsaccepted{???, 2021}         % optional: comment it out if no accepted date
+%% manually set running header for a shorter list of authors if needed
+% \shortauthors{A Author A, et al.}
 
 
-\newcommand{\DONE}{{\color{green!60!black}\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}~}
-\newcommand{\DOIT}{{\color{red!60!black}\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\boxtimes$}}~}
-\newcommand{\PROGRESS}{(in progress)~}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% edits by authors are given below
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\usepackage{booktabs}
 
-\begin{document}
 
-\input{response-v3-content}
+\newcommand{\TITLE}{AICov: An Integrative Deep
+    Learning Framework for COVID-19 Forecasting with Population
+    Covariates}
 
-\title{{\bf\fontsize{14pt}{18pt}\selectfont AICov: An Integrative Deep Learning Framework for COVID-19 Forecasting with Population Covariates}}
-\author[1]{{\fontsize{12pt}{0.5em}\selectfont Geoffrey C. Fox}}
-\author[1]{{\fontsize{12pt}{18pt}\selectfont Gregor von Laszewski}}
-\author[1]{{\fontsize{12pt}{0.5em}\selectfont Fugang Wang}}
-\author[2,3]{{\fontsize{12pt}{0.5em}\selectfont Saumyadipta Pyne}}
-
-\affil[1]{{\fontsize{12pt}{0.5em}\selectfont Digital Science Center, Indiana University, Bloomington Indiana, USA}}
-\affil[2]{{\fontsize{12pt}{0.5em}\selectfont Public Health Dynamics Lab, and Department of Biostatistics, University of Pittsburgh, Pittsburgh, Pennsylvania, USA}}
-\affil[3]{{\fontsize{12pt}{0.5em}\selectfont Health Analytics Network, Pennsylvania, USA}}
 
 \newcommand{\ABSTRACT}{
 The COVID-19 pandemic has had profound global consequences on health,
@@ -108,43 +77,37 @@ integration of the data to our model as compared to one that only uses
 case and death data. As we use deep learning our models adapt over
 time while learning the model from past data.
 }
-\date{}
- 
-\newcommand{\TODO}[1]{
-\todo[color=yellow!20]{#1}
-}
+
+\title[AICov: Deep
+    Learning Framework for COVID-19 Forecasting with Population
+    Covariates]{\TITLE}
+
+\author[1]{Geoffrey C. Fox}
+\author[1]{Gregor von Laszewski\thanks{Corresponding author. Email: laszewski@gmail.com}}
+\author[1]{Fugang Wang}
+\author[2,3]{Saumyadipta Pyne}
+
+\affil[1]{Digital Science Center, Indiana University, Bloomington Indiana, USA}
+\affil[2]{Public Health Dynamics Lab, and Department of Biostatistics, University of Pittsburgh, Pittsburgh, Pennsylvania, USA}
+\affil[3]{Health Analytics Network, Pennsylvania, USA}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\baselinestretch}{1.07}
-\renewcommand{\thefootnote}{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\begin{document}
 
 \maketitle
-\thispagestyle{empty}
 
-\begin{quotation}
-\centerline{\bfseries{\fontsize{14pt}{1em}\selectfont Abstract}}\par
-\setlength{\parindent}{3.22cm}
-{\fontsize{12pt}{1.07em}\selectfont~~\ABSTRACT}
+\begin{abstract}
+  \ABSTRACT
+\end{abstract}
 
-\vspace{12pt}
-\noindent {\bfseries{Key words and phrases:}}
-COVID-19, deep learning, prediction, risk factors, comorbidities.
-\par
-\end{quotation}\par
-
-\def\thefigure{\arabic{figure}}
-\def\thetable{\arabic{table}}
-
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
-
-\fontsize{12}{1.07em}\selectfont
-
-\setcounter{section}{0} %***
-\setcounter{equation}{0} %-1
-
+\begin{keywords} % alphabetical; excluding anything in the title already
+  Cloudmesh;
+  Comorbidities;
+  Prediction;
+  Risk factors.
+\end{keywords}
 
 \section{Introduction}
 
@@ -161,13 +124,13 @@ emergence of a cluster of cases in Wuhan, China, on 31 December 2019,
 COVID-19 has spread rapidly worldwide. Just six months later, as of 23
 June 2020, there are 8,993,659 COVID-19 cases and 469,587 deaths
 globally. On 30 January 2020, the World Health Organization (WHO)
-\cite{www-who} declared COVID-19 to be a Public Health Emergency of
+\citep{www-who} declared COVID-19 to be a Public Health Emergency of
 International Concern and subsequently, on 11 March 2020, a pandemic.
 
 In the United States, the first case of COVID-19 was confirmed on 20
 January 2020 in Washington State, and as of 23 June 2020, there were
 over 2.3 million confirmed cases and 121,167 deaths
-\cite{www-nyt-map}.  Although initial efforts to reduce the spread
+\citep{www-nyt-map}.  Although initial efforts to reduce the spread
 took place, recent data shows a resurgence at an increased scale. In
 the absence of a vaccine or treatment to effectively combat the
 disease, non-pharmaceutical policy interventions such as social
@@ -184,7 +147,7 @@ could be scarce, and the quality of data annotation, validation, and
 aggregation might be uncertain. For instance, changes in clinical data
 entry, such as the addition of a new category clinically diagnosed to
 the existing lab-confirmed category, may likely have been reflected in
-the reporting \cite{Petropoulos2020-hh}. Initial fears about COVID-19
+the reporting \citep{Petropoulos2020-hh}. Initial fears about COVID-19
 among the general population with regards to the trajectory of the
 pandemic could also affect administrative reporting. Diverse media
 sources and differences in local and federal policies may add to the
@@ -197,11 +160,11 @@ Unlike earlier global outbreaks, during COVID-19, the current
 worldwide digital ecosystem allows for real-time data collection,
 which in turn is used by artificial intelligence (AI) and deep
 learning systems to understand healthcare trends, model risk
-associations, and predict outcomes \cite{Ting2020-lw}.  In addition to
+associations, and predict outcomes \citep{Ting2020-lw}.  In addition to
 traditional public health surveillance strategies available to most
 countries, a variety of static and dynamic data types may be
 integrated to model the scale and dynamics of this pandemic
-\cite{Pyne2015-ao}. Several organizations, including the Johns Hopkins
+\citep{Pyne2015-ao}. Several organizations, including the Johns Hopkins
 University’s Center for Systems Science and Engineering, the New York
 Times, the Atlantic’s COVID-19 tracking project, among others have
 developed real-time tracking maps for following COVID-19 cases around
@@ -212,7 +175,7 @@ groups that use a wide variety of approaches ranging from SEIR
 (Susceptible-Exposed-Infectious-Recovered) to Agent-based to Bayesian
 models to understand the non-pharmaceutical policy interventions (or
 the lack thereof) to predict disease dynamics and its impact on human
-lives \cite{www-cdc-modeling-forecast}.
+lives \citep{www-cdc-modeling-forecast}.
 
 For precise and contextually relevant modeling of COVID-19 dynamics
 for a given population or community, we use data integration to
@@ -251,7 +214,6 @@ on population risk factors with time-series disease data. In Section
 demonstrate our analysis involving the population risk factors and
 identify those that contribute to our prediction accuracy. Finally, we
 present our conclusion.
-
 
 
 \section{LSTM}
@@ -796,33 +758,6 @@ chosen three different input lengths, namely 3, 4, and 5 days.
 \end{table}
 
 
-\begin{comment}
-\begin{verbatim}
-    model.add(Dense(InitialMLP, activation=activationvalue, input_shape=(n_timesteps, n_features)))
-        
-    model.add(LSTM(n_nodes, unroll=True, recurrent_dropout= recurrent_dropout1, dropout = dropout1,
-                   activation= activationvalue , return_sequences=True, recurrent_activation="sigmoid",
-                   input_shape=(n_timesteps, nextround)))
-                   
-    model.add(LSTM(n_nodes, unroll=True, recurrent_dropout= recurrent_dropout2, dropout = dropout2,
-               activation= activationvalue, recurrent_activation="sigmoid",
-               input_shape=(n_timesteps, n_nodes)))
-\end{verbatim}
-
-\begin{verbatim}
-Window Size  1  
-n_samples: 12540 
-n_timesteps: 1 
-n_features: 3 
-n_outputs: 30 
-batch_size: 110 
-n_nodes: 16 
-epochs: 200
-is NaN  77000  
-percent  20.47  
-not NaN  299200
-\end{verbatim}
-\end{comment}
 
 We have run the training on all 110 cities from our data that
 represented each FIPS while not including any risk factors (Question
@@ -856,7 +791,6 @@ deaths.
     \label{fig:box-death}
 \end{figure}
 
-%%%%%%
 
 
 Further, the obtained sorted order of the best prediction models by
@@ -1064,19 +998,6 @@ candidates.
     \end{minipage}
 \end{figure}
 
-\begin{comment}
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/swarmplot_cases.pdf}
-    \caption{Caption}
-    \label{fig:my_label}
-
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/swarmplot_death.pdf}
-    \caption{Caption}
-    \label{fig:my_label}
-\end{figure}
-\end{comment}
 
 
 While this study focuses on if and which risk factors can improve the
@@ -1356,68 +1277,21 @@ similar regions.
 \end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
 
 %
 % SUPLEMENTAL
 %
 
-\vskip 14pt
-\noindent {\bfseries{\fontsize{14pt}{1em}\selectfont Supplementary Materials}}
+\section*{Supplementary Materials}
 
 Contain
 the brief description of the online supplementary materials.
-\par
 
-\end{comment}
 %
 % ACKNOWLEDGMENT
 %
 
-\section{Acronyms}
-
-This section contains the list of acronyms used in the paper for easy
-reference. The definitions of the risk factors are however given
-within the paper in Table~\ref{tab:risk-factors} on page
-\pageref{tab:risk-factors} and not repeated here.
-
-\begin{itemize}[leftmargin=5cm]
-\item[{\bf API:}] Application Programming Interfaces
-\item[{\bf BRFSS:}] Behavioral Risk Factor Surveillance System
-\item[{\bf CDC:}] Center for Desease Control
-\item[{\bf CIF21:}] Cyberinfrastructure Framework for 21st Century 
-\item[{\bf COVID-19:}] COrona VIrus Disease 2019 
-\item[{\bf CSSE:}] Center for Systems Science and Engineering
-\item[{\bf DIBBS:}] Data Infrastructure Building Blocks
-\item[{\bf FIPS:}] Federal Information Processing Standards
-\item[{\bf GPU:}] Graphics Processing Unit 
-\item[{\bf HPC:}] High Performance Computing
-\item[{\bf LSTM:}] Long Short-Term Memory
-\item[{\bf NBDIF:}] NIST Big Data Working Group
-\item[{\bf NCHS:}] CDC National Center for Health Statistics
-\item[{\bf NIST:}] National Institute of Standards and Technology
-\item[{\bf RELU:}] REctified Linear Unit
-\item[{\bf REST:}] REpresentational State Transfer 
-\item[{\bf RNN:}] Recurrent Neural Network
-\item[{\bf SEIR:}] Susceptible, Expose, Infectious, Recovered)
-\item[{\bf SIR}] Susceptible, Infectious, Recovered
-\item[{\bf U.S.:}] United States of America
-\item[{\bf NSF:}] National Science Foundation
-\item[{\bf MSE:}] Mean Squared Error
-\item[{\bf SELU:}] Scaled Exponential Linear Unit
-\item[{\bf CI:}] Cyber Infrastructure
-\item[{\bf CINES:}] CyberInfrastructure for Network Engineering and Science
-\item[{\bf WHO:}] World Health Organization
-\item[{\bf NONE:}] \todo{NO FACTORS}
-\item[{\bf NORM\_POP:}] Normalized Population
-\item[{\bf cum:}] cumulative
-\end{itemize}
-
-
-
-
-\vskip 14pt
-\noindent {\bfseries{\fontsize{14pt}{1em}\selectfont Acknowledgements}}
+\section*{Acknowledgements}
 
 This work is partially supported by the National Science Foundation
 (NSF) through awards CIF21 DIBBS 1443054, nanoBIO 1720625,
@@ -1425,34 +1299,58 @@ Cybertraining 1829704, CINES 1835598 and Global Pervasive
 Computational Epidemiology 1918626.  We thank J. Kadupitiya for
 several useful discussions on deep learning frameworks.
 
-\par
+\clearpage
+
+\section*{Acronyms}
+
+This section contains the list of acronyms in Table{tab:acronymes} as used in the paper for easy
+reference. The definitions of the risk factors are however given
+within the paper in Table~\ref{tab:risk-factors} on page
+\pageref{tab:risk-factors} and not repeated here.
+
+\begin{table}[!h]
+  \begin{tabular}{ll}
+    \toprule
+    Abbreviation & Description \\
+    \midrule
+    API & Application Programming Interfaces \\
+    BRFSS & Behavioral Risk Factor Surveillance System \\
+    CDC & Center for Desease Control \\
+    CI & Cyber Infrastructure \\
+    CIF21 & Cyberinfrastructure Framework for 21st Century  \\
+    CINES & CyberInfrastructure for Network Engineering and Science \\
+    COVID-19 & COrona VIrus Disease 2019  \\
+    CSSE & Center for Systems Science and Engineering \\
+    cum & cumulative \\
+    DIBBS & Data Infrastructure Building Blocks \\
+    FIPS & Federal Information Processing Standards \\
+    GPU & Graphics Processing Unit  \\
+    HPC & High Performance Computing \\
+    LSTM & Long Short-Term Memory \\
+    MSE & Mean Squared Error \\
+    NBDIF & NIST Big Data Working Group \\
+    NCHS & CDC National Center for Health Statistics \\
+    NIST & National Institute of Standards and Technology \\
+    NONE & \todo{NO FACTORS} \\
+    NORM\_POP & Normalized Population \\
+    NSF & National Science Foundation \\
+    RELU & REctified Linear Unit \\
+    REST & REpresentational State Transfer  \\
+    RNN & Recurrent Neural Network \\
+    SEIR & Susceptible, Expose, Infectious, Recovered) \\
+    SELU & Scaled Exponential Linear Unit \\
+    SIR &  Susceptible, Infectious, Recovered \\
+    U.S. & United States of America \\
+    WHO & World Health Organization \\
+    \midrule
+\end{tabular}
+\end{table}
+
+\clearpage
 
 
+\bibliographystyle{jds}
+\bibliography{bib/data-covid19,bib/lstm,bib/cloudmesh}
 
-%
-% BIBLIOGRAPHY
-%
-
-
-%\iffalse
-\fontsize{11}{1em}\selectfont
-\renewcommand\bibname{\bfseries{\fontsize{14pt}{1em}\selectfont References}}
-\expandafter\ifx\csname
-natexlab\endcsname\relax\def\natexlab#1{#1}\fi
-\expandafter\ifx\csname url\endcsname\relax
-  \def\url#1{\texttt{#1}}\fi
-\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL}\fi
-%\fi
-
-%\clearpage
-
-%\bibliographystyle{plainurl}
-%\bibliographystyle{plain}
-\bibliographystyle{plainnat}
-
-
-
-\Bibliography{bib/data-covid19,bib/lstm,bib/cloudmesh}
 
 \end{document}
-
