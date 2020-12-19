@@ -63,27 +63,27 @@
     Covariates}
 
 
-\newcommand{\ABSTRACT}{
-The COVID-19 pandemic has had profound global consequences on health,
-economic, social, behavioral, and almost every major aspect of human
-life. Therefore, it is of great importance to model COVID-19 and other
-pandemics in terms of the broader social contexts in which they take
-place.  We present the architecture of an artificial intelligence
-enhanced COVID-19 analysis (in short AICov) , which provides an
-integrative deep learning framework for COVID-19 forecasting with
-population covariates, some of which may serve as putative risk
-factors.  We have integrated multiple different strategies into AICov,
-including the ability to use deep learning strategies based on LSTM
-and event modeling.  To demonstrate our approach, we have introduced a
-framework that integrates population covariates from multiple
-sources. Thus, AICov not only includes data on COVID-19 cases and
-deaths but, more importantly, the population's socioeconomic, health,
-and behavioral risk factors at a local level. The compiled data are
-fed into AICov, and thus we obtain improved prediction by the
-integration of the data to our model as compared to one that only uses
-case and death data. As we use deep learning our models adapt over
-time while learning the model from past data.
-}
+\newcommand{\ABSTRACT}{ The COVID-19 (COrona VIrus Disease 2019)
+  pandemic has had profound global consequences on health, economic,
+  social, behavioral, and almost every major aspect of human
+  life. Therefore, it is of great importance to model COVID-19 and
+  other pandemics in terms of the broader social contexts in which
+  they take place.  We present the architecture of an artificial
+  intelligence enhanced COVID-19 analysis (in short AICov) , which
+  provides an integrative deep learning framework for COVID-19
+  forecasting with population covariates, some of which may serve as
+  putative risk factors.  We have integrated multiple different
+  strategies into AICov, including the ability to use deep learning
+  strategies based on Long Short-Term Memory (LSTM) and event
+  modeling.  To demonstrate our approach, we have introduced a
+  framework that integrates population covariates from multiple
+  sources. Thus, AICov not only includes data on COVID-19 cases and
+  deaths but, more importantly, the population's socioeconomic,
+  health, and behavioral risk factors at a local level. The compiled
+  data are fed into AICov, and thus we obtain improved prediction by
+  the integration of the data to our model as compared to one that
+  only uses case and death data. As we use deep learning our models
+  adapt over time while learning the model from past data.}
 
 \title[AICov: Deep
     Learning Framework for COVID-19 Forecasting with Population
@@ -95,7 +95,8 @@ time while learning the model from past data.
 \author[2,3]{Saumyadipta Pyne}
 
 \affil[1]{Digital Science Center, Indiana University, Bloomington Indiana, USA}
-\affil[2]{Public Health Dynamics Lab, and Department of Biostatistics, University of Pittsburgh, Pittsburgh, Pennsylvania, USA}
+\affil[2]{Public Health Dynamics Lab, and Department of Biostatistics,
+  University of Pittsburgh, Pittsburgh, Pennsylvania, USA}
 \affil[3]{Health Analytics Network, Pennsylvania, USA}
 
 
@@ -239,7 +240,7 @@ This section presents a short overview of the recurrent neural network algorithm
 
 In this study, we used a Long Short-Term Memory (LSTM) algorithm for
 our predictions \citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
-recurrent neural network (RNN) \citep{Rumelhart1986-li} with feedback
+Recurrent Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
 connections allowing the use of data input sequences to predict data
 output sequences. LSTMs have been applied to many application areas
 from handwriting \citep{Graves2009-qb}, image, feature detection, and
@@ -355,10 +356,11 @@ framework, AICov, and how we address each of these.
 \begin{requirement}{\bf Ease of Use.}
   A major design criterion for AICov is that the framework must be
   easy to use, and extensions can be made to allow usability of both
-  the API as well as the user interface. \Solution To address these
-  requirements, we are devising a specialized but easy to use time
-  series API for COVID-19 that integrates common tasks such as
-  automated filtering and normalization of the data.
+  the Application Programming Interfaces (API) as well as the user
+  interface. \Solution To address these requirements, we are devising
+  a specialized but easy to use time series API for COVID-19 that
+  integrates common tasks such as automated filtering and
+  normalization of the data.
 \end{requirement}
 
 
@@ -446,10 +448,12 @@ framework, AICov, and how we address each of these.
   For other uses of AICov, we need to integrate a flexible resource
   utilization framework. \Solution To address this requirement, we
   leverage from our earlier work and utilize through Cloudmesh and
-  NIST NBDIF definitions cloud services into the architecture
-  \citep{las-19-nist}. This includes containers but also infrastructure
-  services in the cloud. Through these service integrations, we also
-  provide access to GPUs.
+  National Institute of Standards and Technology (NIST) Big Data
+  Working Group (NBDIF) definitions cloud services into the
+  architecture \citep{las-19-nist}. This includes containers but also
+  infrastructure services in the cloud. Through these service
+  integrations, we also provide access to Graphics Processing Units
+  (GPUs).
 \end{requirement}
 
 \begin{requirement}{\bf Convenient Interfaces.}
@@ -512,11 +516,12 @@ regular reporting of accurate Coronavirus outbreaks data from local
 health departments has been understandably difficult, especially in
 the areas that are hardest hit. We use data on community-specific
 health and behavioral risk factors aggregated at the county level from
-the large-scale longitudinal CDC BRFSS surveys \citep{www-cdc-brfss},
-and demographic and socioeconomic data from the U.S. Census Bureau
-that are known at the local levels along with the cases and deaths
-data compiled by NCHS \citep{www-cdc-nchs} and integrate them with
-other data sources.
+the large-scale longitudinal CDC Behavioral Risk Factor Surveillance
+System (BRFSS) surveys \citep{www-cdc-brfss}, and demographic and
+socioeconomic data from the U.S. Census Bureau that are known at the
+local levels along with the cases and deaths data compiled by the CDC
+National Center for Health Statistics (NCHS) \citep{www-cdc-nchs} and
+integrate them with other data sources.
 
 \subsection{Data Collection and Processing}
 
@@ -524,15 +529,16 @@ Among the different sources of data on daily cases and deaths data
 collected and aggregated at different spatial levels, especially for
 the U.S., many are either freely available repositories such as GitHub
 or accessible via specifically developed online resources such as the
-New York Times~\citep{github-nytimes} and the Johns Hopkins Coronavirus
-Resource Center~\citep{www-jh-covid19}.  For this study, we generated
-two data sets based on the latter resource upon our checking for the
-locations and times at which cumulative counts of COVID-19 cases and
-deaths on any given day were no less than those on the previous
-day. This led us to compile daily coronavirus cases and deaths data
-for 345 U.S. counties from 32 states and the District of Columbia and
-matched by five-digit FIPS code or county name to dynamic and static
-variables from additional data sources.
+New York Times~\citep{github-nytimes} and the Johns Hopkins
+Coronavirus Resource Center~\citep{www-jh-covid19}.  For this study,
+we generated two data sets based on the latter resource upon our
+checking for the locations and times at which cumulative counts of
+COVID-19 cases and deaths on any given day were no less than those on
+the previous day. This led us to compile daily coronavirus cases and
+deaths data for 345 U.S. counties from 32 states and the District of
+Columbia and matched by five-digit Federal Information Processing
+Standards (FIPS) code or county name to dynamic and static variables
+from additional data sources.
 
 The static data in this repository was collected from the U.S. Census
 Bureau and the Centers for Disease Control and Prevention (CDC). The
@@ -1051,7 +1057,7 @@ following the sequence combined with the same quantities for the
 following 14 days. This gives us 30 different output features for each
 sequence. We renormalized, so the two basic features (following day)
 contributed 50\% of the loss function. We supported this in TensorFlow
-with a custom mean square error ($MSE$) loss function that dropped
+with a custom mean square error (MSE) loss function that dropped
 training values that were not available for time sequences near the
 end of the examined period. While one can not train on future values,
 we can predict them, as seen in our sample outputs. We extensively
@@ -1063,17 +1069,17 @@ We performed an extensive hyper-parameter search and we show the
 values in Table \ref{tab:model} that give robust results without
 overfitting. Furthermore, we looked at four different activation
 functions for this analysis in the LSTM and fully connected
-layers. $SELU$, $RELU$ and $TANH$ activations gave very similar
-results while $SIGMOID$ activation was much worse. However we still
-use a $SIGMOID$ function in the last stage just as we did in Section
-\ref{sec:lstm-covariate}. We also looked at the number of hidden units
-(separately for LSTM and fully connected layers), the number of LSTM
-layers and the dropout values.  Only the latter produced a significant
-change and, for example, removing dropouts decreased the loss by about
-16\% but we retained them to provide a robust environment. We chose
-randomly 20\% of the data for validation and testing and this had
-similar loss values to the training data (the other 80\%) with our
-chosen dropout.
+layers. Scaled Exponential Linear Unit (SELU), REctified Linear Unit
+(RELU) and TANH activations gave very similar results while SIGMOID
+activation was much worse. However we still use a SIGMOID function in
+the last stage just as we did in Section \ref{sec:lstm-covariate}. We
+also looked at the number of hidden units (separately for LSTM and
+fully connected layers), the number of LSTM layers and the dropout
+values.  Only the latter produced a significant change and, for
+example, removing dropouts decreased the loss by about 16\% but we
+retained them to provide a robust environment. We chose randomly 20\%
+of the data for validation and testing and this had similar loss
+values to the training data (the other 80\%) with our chosen dropout.
 
 The final technical issue concerns the data normalization where each
 feature is transformed by a feature dependent -- but city independent
@@ -1087,7 +1093,7 @@ the data value.  This is natural if there are counting (square root(N)
 for N observations) errors as the deep learning loss function is
 $(predicted-observed)^{2}$ without the error traditional in
 $\chi^{2}$, namely $((predicted-observed)/error)^{2}$. This approach
-with standard deep learning $MSE$ appears sound instead of dividing by
+with standard deep learning MSE appears sound instead of dividing by
 the population. That will emphasize the error contribution of smaller
 cities but is still interesting to look at due to the presence of many
 systematic errors.
@@ -1222,13 +1228,13 @@ We present AICov as an integrative deep learning framework for
 COVID-19 forecasting with the help of population covariates. Thus, its
 objectives are different from those of traditional compartmental
 models. One of the important features of the architecture for AICov is
-that it is by design targeting Cloud and HPC resources to conduct
-parameter sweeps to leverage sophisticated deep learning toolkits. The
-architecture allows the integration of various data sources that can
-update the data from its sources on demand and update its model
-predictions based on newly introduced data. Parameters can easily be
-adjusted via Jupyter notebooks that, in turn, call the computational
-backends on HPC and cloud resources.
+that it is by design targeting Cloud and High Performance Computing
+(HPC) resources to conduct parameter sweeps to leverage sophisticated
+deep learning toolkits. The architecture allows the integration of
+various data sources that can update the data from its sources on
+demand and update its model predictions based on newly introduced
+data. Parameters can easily be adjusted via Jupyter notebooks that, in
+turn, call the computational backends on HPC and cloud resources.
 
 In addition to this architecture, we used data collected from multiple
 public sources and agencies, and integrated the same across spatially
@@ -1302,37 +1308,42 @@ the brief description of the online supplementary materials.
 \section*{Acknowledgements}
 
 This work is partially supported by the National Science Foundation
-(NSF) through awards CIF21 DIBBS 1443054, nanoBIO 1720625,
-Cybertraining 1829704, CINES 1835598 and Global Pervasive
-Computational Epidemiology 1918626.  We thank J. Kadupitiya for
-several useful discussions on deep learning frameworks.
+(NSF) through awards Cyberinfrastructure Framework for 21st Century
+Data Infrastructure Building Blocks (1443054), Network for
+Computational Nanotechnology Engineered nanoBIO Node (1720625),
+Cybertraining (1829704), CyberInfrastructure for Network Engineering
+and Science (1835598) and Global Pervasive Computational Epidemiology
+(1918626).  We thank J. Kadupitiya for several useful discussions on
+deep learning frameworks.
 
 \clearpage
 
 \section*{Acronyms}
 
-This section contains the list of acronyms in Table{tab:acronymes} as used in the paper for easy
-reference. The definitions of the risk factors are however given
-within the paper in Table~\ref{tab:risk-factors} on page
-\pageref{tab:risk-factors} and not repeated here.
+This section contains the list of acronyms in Table \ref{tab:acronyms}
+as used in the paper for easy reference. The definitions of the risk
+factors are however given within the paper in
+Table~\ref{tab:risk-factors} on page \pageref{tab:risk-factors} and
+not repeated here.
+
+\todo{NORM\_POP Normalized population}
 
 \begin{table}[!h]
+  \caption{Non-risk factor acronyms used in this paper.}
+  \label{tab:acronyms}
   \begin{tabular}{ll}
     \toprule
     Abbreviation & Description \\
     \midrule
     API & Application Programming Interfaces \\
     BRFSS & Behavioral Risk Factor Surveillance System \\
-    CDC & Center for Desease Control \\
-    CI & Cyber Infrastructure \\
-    CIF21 & Cyberinfrastructure Framework for 21st Century  \\
-    CINES & CyberInfrastructure for Network Engineering and Science \\
+    CDC & U.S.~Centers for Disease Control and Prevention \\
+    CI & Continious INtegration \\
     COVID-19 & COrona VIrus Disease 2019  \\
     CSSE & Center for Systems Science and Engineering \\
     cum & cumulative \\
-    DIBBS & Data Infrastructure Building Blocks \\
     FIPS & Federal Information Processing Standards \\
-    GPU & Graphics Processing Unit  \\
+    GPUs & Graphics Processing Units  \\
     HPC & High Performance Computing \\
     LSTM & Long Short-Term Memory \\
     MSE & Mean Squared Error \\
@@ -1344,6 +1355,7 @@ within the paper in Table~\ref{tab:risk-factors} on page
     NSF & National Science Foundation \\
     RELU & REctified Linear Unit \\
     REST & REpresentational State Transfer  \\
+    RMSE & Root Mean Squared Error \\
     RNN & Recurrent Neural Network \\
     SEIR & Susceptible, Expose, Infectious, Recovered) \\
     SELU & Scaled Exponential Linear Unit \\
@@ -1351,7 +1363,7 @@ within the paper in Table~\ref{tab:risk-factors} on page
     U.S. & United States of America \\
     WHO & World Health Organization \\
     \midrule
-\end{tabular}
+  \end{tabular}
 \end{table}
 
 \clearpage

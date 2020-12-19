@@ -1,20 +1,29 @@
 
-\newcommand{\DONE}{{\color{green!60!black}\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\checkmark$}}~}
-\newcommand{\DOIT}{{\color{red!60!black}\makebox[0pt][l]{$\square$}\raisebox{.15ex}{\hspace{0.1em}$\boxtimes$}}~}
-\newcommand{\PROGRESS}{(in progress)~}
+\definecolor{PROGRESS}{cmyk}{0.10, 0.10, 0.0, 0.0, 1.00}
+\definecolor{TODO}{cmyk}{0.0, 0.10, 0.10, 0.00, 1.00}
+\definecolor{DONE}{cmyk}{0.10, 0.0, 0.10, 0.0, 1.0}
 
+
+\newcommand{\REVIEW}[3]{
+  \begin{tcolorbox}[colback={#1}]
+    {\bf {#1}. {#2}}
+ \end{tcolorbox}
+  \begin{quote}
+    {#3}
+  \end{quote}
+}
 
 REVISION DUE: 01.12.2021
 
 \section{Additional actions taken}
 
-\begin{enumerate}
 
-    \item \DONE We used the new JDS \LaTeX template available from the Journal page instead of the older one that we used.
-    
-    \item \DONE Due to that all references are now in the style of the journal.
-    
-    \item \DONE URLs have been added with the standard urlbst tool so they can be used in the refernces. The jdsurl.bst is included in the source.
+\REVIEW{DONE}{Using the JDS template} {We used the new JDS \LaTeX
+  template available from the Journal page instead of the older one
+  that we used. This also includes The change of citations in brackets
+  when cited. URLs have been added with the standard urlbst tool so
+  they can be used in the refernces. The jdsurl.bst is included in the
+  source.}
 
 \end{enumerate}
 
@@ -23,233 +32,267 @@ REVISION DUE: 01.12.2021
 
 My comments are the following:
 
-The revised manuscript is much smoother than the first version, but I still feel that less than sufficient care was put into the writing. The reviewer pointed some in the pdf report. I have some additional editorial suggestions:
+The revised manuscript is much smoother than the first version, but I
+still feel that less than sufficient care was put into the
+writing. The reviewer pointed some in the pdf report. I have some
+additional editorial suggestions:
 
-\begin{enumerate}
+\bigskip
 
-\item \PROGRESS Submit the point-by-point response to the reviewer's comments and my comments in a pdf file.
+  \REVIEW{PROGRESS} {Submit the point-by-point response to the
+    reviewer's comments and my comments in a pdf file.}  {The original
+    submisison web page had a field to enter the comments as text
+    which we used. We will change this and introduce a PDF file
+    instead, which is easier for us also.}
 
-\begin{quote}
-The original submisison web page had a field to enter the comments as text which we used. We will change this and introduce a PDF file instead, which is easier for us also.
-\end{quote}
-
-
-
-\item \DONE Needs page number (line number) for ease of referencing in the review.
-
-\begin{quote}
-Page numbers and line numbers were activated
-\end{quote}
-
-
-\item \DONE Do not italicize in the text.
-
-\begin{quote}
-All italicized text have been removed.
-inline formulas are done by latex italized. 
-\end{quote}
+  \REVIEW{PROGRESS} {Submit the point-by-point response to the
+    reviewer's comments and my comments in a pdf file.}
+  {The original submisison web page had a field to enter the comments
+    as text which we used. We will change this and introduce a PDF
+    file instead, which is easier for us also.}
 
 
-\item \DONE AICov needs to be defined in the abstract.
+  \REVIEW{DONE} {Needs page number (line number) for ease of
+    referencing in the review.}
+  {Page numbers and line numbers were
+    activated with the review style from the new JDS \LaTeX{}
+    template}
 
-\begin{quote}
-We added 
-
-"We present the architecture of an artificial intelligence enhanced COVID-19 analysis (in short AICov)" 
-
-was added to the abstract.
-\end{quote}
-
-
-\item \PROGRESS Acronyms need to be defined at their first occurrences (e.g., AI in the intro). An acronyme table is included in table 1, we added the following acronyms to the paper
-
-\begin{quote}
-    All acronyms have been defined at their first usage. In addition we have added a section Acronyms in which all acronyms are listed to make it easier for the reader to look them up in case they are used later on in the paper.
-\end{quote}
-
-\DOIT capitalization in definition sin the table 1 and others
-
-\DOIT PERCENT, PERCENTBALCK, BLACK PERCENT, also for hispanics and senior
-
-\DOIT use risk factor in table headings
-
-\DOIT PER1000 is /1000
-
-\DOIT make acronyms appear in text
-
-\DOIT Table 1. capitalization,explain why they are different or make them the same
+  \REVIEW{DONE} {Do not italicize in the text.}
+  {All italicized text
+    have been removed.  Formulas enclosed in dollar signs are in
+    italized text as is default for the JDS document style.}
 
 
-\item \DOIT  Figure 2: please present the equations as equations. The notations used in the equation need a full check (e.g., h is used as both the dimension and vector). I'd like to see a clear distinction between inputs/outputs and parameters. I'd suggest that the inputs be set up before the equations are presented.
+  \REVIEW{DONE} {AICov needs to be defined in the abstract.}
+  {We added ``We present the architecture of an artificial
+    intelligence enhanced COVID-19 analysis (in short AICov)''
+  in the abstract. We also defined COVID-10 in the abstract.}
 
-\begin{quote}
-    \todo{todo}
-\end{quote}
+\REVIEW{DONE}{Acronyms need to be defined at their first occurrences
+  (e.g., AI in the intro). An acronyme table is included in table 1,
+  we added the following acronyms to the paper}
+  {All acronyms have been defined at their first usage. In addition
+    we have added a section Acronyms in which all acronyms are listed
+    to make it easier for the reader to look them up in case they are
+    used later on in the paper.
 
-\item \DOIT  Regenerate the figures into pdf format (the current jpg/png figures blur when zoomed in).
-
-\begin{quote}
-    \todo{todo}
-\end{quote}
-
-\item \DONE  Table 2: consider reformating it; it would not fit the page width in print.
-
-\begin{quote}
-Table 2 has been reformatted. It was previously fit in the column with resize box. While rotating the headers the font is increased. The table still fits in the column as it still uses resizebox.
-\end{quote}
+    All riskfactors have been capitalized.
 
 
-\item \DONE  Table 3: tidy the headers.
+TODO. PERCENT, PERCENTBALCK, BLACK PERCENT, also for hispanics and senior
 
-\begin{quote}
-    The headers have been cleaned up and linebreaks wer introduced so the resizebox of the table presents the table now larger
-\end{quote}
+TODO. use risk factor in table headings
 
-\item \DOIT  Figure 5-6: can be combined to one figure with two panels (using ggplot2 and save the space of the labels of the horizontal axis).
+TODO. PER1000 is /1000
 
-\begin{quote}
-    \todo{todo}
-\end{quote}
+TODO. make acronyms appear in text
 
-\item \DOIT  Figure 7-8: can be one figure with two panels; pop density 2010 needs to be cleaned.
+TODO. Table 1. capitalization,explain why they are different or make them the same
+  }
+  
 
-\begin{quote}
-    \todo{todo}
-\end{quote}
+\REVIEW{TODO}{Figure 2: please present the equations as equations. The
+  notations used in the equation need a full check (e.g., h is used as
+  both the dimension and vector). I'd like to see a clear distinction
+  between inputs/outputs and parameters. I'd suggest that the inputs
+  be set up before the equations are presented.}
+  { todo}
 
-\item \DOIT  Figure 9-14: combine into one figure.
 
-\begin{quote}
-    \todo{todo}
-\end{quote}
+\REVIEW{TODO}{Regenerate the figures into pdf format (the current
+  jpg/png figures blur when zoomed in).}
+  { todo}
 
-\item \DONE  Table 4: keep the number of digits consistent.
 
-\begin{quote}
-    The digits have been padded with the missing 0 to make them all the same length
-\end{quote}
+\REVIEW{DONE}{Table 2: consider reformating it; it would not fit the
+  page width in print.}
+  { Table 2 has been reformatted. It was previously fit in the column
+    with resize box. While rotating the headers the font is
+    increased. The table still fits in the column as it still uses
+    resizebox.}
 
-\item \DOIT  Reproducibility: submit data/code/README in a compressed file as supplementary material, or put them in a public repo and give the link under an unnumbered section Supplementary Material.
+\REVIEW{DONE}{Table 3: tidy the headers.}
+  { The headers have been cleaned up and linebreaks wer introduced so
+    the resizebox of the table presents the table now larger} }
 
-\begin{quote}
-    \todo{todo}
-\end{quote}
+\REVIEW{TODO}{Figure 5-6: can be combined to one figure with two
+  panels (using ggplot2 and save the space of the labels of the
+  horizontal axis).  }
+  { todo}
 
-\end{enumerate}
 
-To submit your revision, please log in to EJMS and submit it as a revised file to the original submission. Please also include a detailed description of how you addressed all the points raised by the reviewers.
+\REVIEW{TODO}{Figure 7-8: can be one figure with two panels; pop
+  density 2010 needs to be cleaned.}
+  { todo}
+
+
+\REVIEW{TODO}{Figure 9-14: combine into one figure.}
+  { todo}
+
+
+\REVIEW{DONE}{Table 4: keep the number of digits consistent.
+   The digits have been padded with the missing 0 to make them all
+    the same length}
+  { todo}
+  
+\REVIEW{TODO}{Reproducibility: submit data/code/README in a
+  compressed file as supplementary material, or put them in a public
+  repo and give the link under an unnumbered section Supplementary
+  Material.}
+  { todo}
+
+
+
+To submit your revision, please log in to EJMS and submit it as a
+revised file to the original submission. Please also include a
+detailed description of how you addressed all the points raised by the
+reviewers.
 
 \section*{Reviewer 2}
 
-This paper presents AICov, an integrated deep learning framework for COVID-19 forecasting. It takes into account population covariates, and uses LSTM and event modeling to do the forecasting. Data integration is done at a local level. Integration of such information brings improvement to the prediction accuracy. Despite the authors’ effort to address my comments in their revision, the paper is still in rough shape. Please see my comments.
+This paper presents AICov, an integrated deep learning framework for
+COVID-19 forecasting. It takes into account population covariates, and
+uses LSTM and event modeling to do the forecasting. Data integration
+is done at a local level. Integration of such information brings
+improvement to the prediction accuracy. Despite the authors’ effort to
+address my comments in their revision, the paper is still in rough
+shape. Please see my comments.
 
-\begin{enumerate}
-    
-\item \DOIT Page 5, please write the full name for REST (representational state transfer ) when it first appears.
+\bigskip
 
-\begin{quote}
-    The term has been defined at first usage, we also checked all other abbreviations.
-
-    \todo{check other abbreviations}
-
-\end{quote}
-
-
-\item \DOIT Page 5, line 3 under Requirement 3, “we are developed an abstraction API for data” does not read right.
-
-\begin{quote}
-    \todo{todo}
-\end{quote}
-
-\item \DOIT Page 6, line 8, what level is “local level”?
-
-\begin{quote}
-    \todo{todo}
-\end{quote}
+\REVIEW{DONE}{Page 5, please write the full name for REST
+  (representational state transfer) when it first appears.}
+  { The term has been defined at first usage, we also checked all
+    other abbreviations. }
 
 
-\item (partially done) Page 7, Table 1, is “CHD” also a percent? If yes please modify the description; Percent- blacks and black percent both correspond to “Percent of blacks in the population”. Both seem to have been used according to Table 3, with difference in the four model performance measurements. Do the authors have an explanation for this?
 
-    \begin{quote}
-    The table has been updated and it was indicated that it is in percent. There were indeed to different information sources that reported different values for percentage of blacks and other populations. This however has since than corrected and we have been able to use just one population value.
-
-    \todo{fix the values and only have one population value}
-    \end{quote}
+\REVIEW{TODO}{Page 5, line 3 under Requirement 3, “we are developed an
+  abstraction API for data” does not read right.
+}
+  { todo}
 
 
-\item \DOIT Page 8, line 5 of Section 5.1, the abbreviation LSTM has already appeared before, and the full name can be removed.
+\REVIEW{TODO}{Page 6, line 8, what level is “local level”?
+}
+  { todo}
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
 
-\item \DOIT What do the two panels in Figure 4 represent? Please give clearer description either in the text or figure caption.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{PROGRESS} Page 7, Table 1, is “CHD” also a percent? If
+  yes please modify the description; Percent- blacks and black percent
+  both correspond to “Percent of blacks in the population”. Both seem
+  to have been used according to Table 3, with difference in the four
+  model performance measurements. Do the authors have an explanation
+  for this?
+}
+  { The table has been updated and it was indicated that it is in
+    percent. There were indeed to different information sources that
+    reported different values for percentage of blacks and other
+    populations. This however has since than corrected and we have
+    been able to use just one population value.
 
-\item \DOIT Section 5.2, paragraph 2 line 6, no need to capitalize for the word “Samples”. Line 5 from the bottom, no need to capitalize for the word “Insurance”. Please be careful with your writing.
+    \todo{fix the values and only have one population value}}
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
 
-\item \DOIT Section 5.2, the “order for cases sorted by minimum model order” and “order for deaths sorted by minimum model error” paragraphs are redundant, as the same information is already displayed in the x-legend for Figures 5 and 6.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{Page 8, line 5 of Section 5.1, the abbreviation LSTM has
+  already appeared before, and the full name can be removed.
+}
+  { todo}
 
-\item \DOIT In Table 3, what is the unit for the error terms? The errors in Figures 7 and 8 are percentages. If errors in Table 3 are also percentages please clearly mark. Also, the numbers in Figures 7 and 8 do not align with numbers in row 1 of Table 3. Please check your numbers with care.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{What do the two panels in Figure 4 represent? Please give
+  clearer description either in the text or figure caption.
+}
+  { todo}
 
-\item \DOIT Please adjust the location of your figures so they do not look pages apart from their interpretations.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{Section 5.2, paragraph 2 line 6, no need to capitalize for
+  the word “Samples”. Line 5 from the bottom, no need to capitalize
+  for the word “Insurance”. Please be careful with your writing.
+}
+  { todo}
 
-\item \DOIT If I am reading it correctly, Figures 9 and 11 are only the “zoom in” versions of partial information from Figure 13. Similarly for the right column. Why waste space on two more figures when you could make Figures 13 and 14 bigger and explain the findings?
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{Section 5.2, the “order for cases sorted by minimum model
+  order” and “order for deaths sorted by minimum model error”
+  paragraphs are redundant, as the same information is already
+  displayed in the x-legend for Figures 5 and 6.
+}
+  { todo}
 
-\item \DOIT The last paragraph of Section 5.2 suits the conclusion/discussion for future work section, not in the middle of a paper.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{In Table 3, what is the unit for the error terms? The
+  errors in Figures 7 and 8 are percentages. If errors in Table 3 are
+  also percentages please clearly mark. Also, the numbers in Figures 7
+  and 8 do not align with numbers in row 1 of Table 3. Please check
+  your numbers with care.
+}
+  { todo}
 
-\item \DOIT Section 5.3, the authors mentioned two way of constructing covariates. Since the second way was more complicated while yielding no better performance the authors did not use it. Then it can be removed without damaging the storyline.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{Please adjust the location of your figures so they do not
+  look pages apart from their interpretations.
+}
+  { todo}
 
-\item \DOIT The description “We renormalized, so the two basic features (following day) contributed 50% of the loss function” is hard to interpret. Please elaborate.
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{If I am reading it correctly, Figures 9 and 11 are only
+  the “zoom in” versions of partial information from Figure
+  13. Similarly for the right column. Why waste space on two more
+  figures when you could make Figures 13 and 14 bigger and explain the
+  findings?
+}
+  { todo}
 
-\item \DOIT Paragraph 2 on page 14, “Selu, Relu and Tanh activations gave very similar results while Sigmoid activation was much worse. However we still use a Sigmoid function...” is very counter-intuitive. Isn’t the point of trying different activation functions to better fit the data?
-16. Paragraph 3 on page 14, “The basic COVID-19 daily data is extensive but compared two approaches with and without renormalization, but in this case, we ...” The sentence does not read correct. Please check your sentences with care!
 
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+\REVIEW{TODO}{The last paragraph of Section 5.2 suits the
+  conclusion/discussion for future work section, not in the middle of
+  a paper.
+}
+  { todo}
 
-\item \DOIT How to interpret the “significant positive correlation” in Section 6 from the practical perspec- tive? Also, the term “evolution function” made its first appearance in Section 6 without any definition or explanation; I suggest either removing the whole Section 6, or extend it with clearer definition of evolution function.
-18. The first two paragraphs do not read like to be in a “Conclusion” section. Rather, they better fit into the introduction.
-    
-    \begin{quote}
-        \todo{todo}
-    \end{quote}
+
+\REVIEW{TODO}{Section 5.3, the authors mentioned two way of constructing
+  covariates. Since the second way was more complicated while yielding
+  no better performance the authors did not use it. Then it can be
+  removed without damaging the storyline.
+}
+  { todo}
+
+
+\REVIEW{TODO}{The description “We renormalized, so the two basic
+  features (following day) contributed 50\% of the loss function” is
+  hard to interpret. Please elaborate.
+}
+  { todo}
+
+
+\REVIEW{TODO}{Paragraph 2 on page 14, “Selu, Relu and Tanh activations
+  gave very similar results while Sigmoid activation was much
+  worse. However we still use a Sigmoid function...” is very
+  counter-intuitive. Isn’t the point of trying different activation
+  functions to better fit the data?  16. Paragraph 3 on page 14, “The
+  basic COVID-19 daily data is extensive but compared two approaches
+  with and without renormalization, but in this case, we ...” The
+  sentence does not read correct. Please check your sentences with
+  care!
+}
+  { todo}
+
+
+\REVIEW{TODO}{How to interpret the “significant positive correlation” in
+  Section 6 from the practical perspective? Also, the term
+  “evolution function” made its first appearance in Section 6 without
+  any definition or explanation; I suggest either removing the whole
+  Section 6, or extend it with clearer definition of evolution
+  function.  18. The first two paragraphs do not read like to be in a
+  “Conclusion” section. Rather, they better fit into the introduction.
+}
+  { todo}
+
 
 \end{enumerate}
 
