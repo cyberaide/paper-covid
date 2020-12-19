@@ -7,6 +7,7 @@
 
 \usepackage{calc}
 \usepackage{comment}
+\usepackage{todonotes}
 
 % color management
 
@@ -15,7 +16,7 @@
 
 % table managemet
 
-\usepackage[table]{xcolor}
+%\usepackage[table]{xcolor}
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -28,6 +29,7 @@
     \textunderscore\hspace{0pt}%
 }
 \setlength{\emergencystretch}{3em}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,6 +53,9 @@
 \usepackage{amsfonts,amsmath,amssymb,amsthm}
 \usepackage{booktabs}
 
+
+\newtheorem{requirement}{Requirement}
+\newtheorem{question}{Question}
 
 \newcommand{\TITLE}{AICov: An Integrative Deep
     Learning Framework for COVID-19 Forecasting with Population
@@ -1029,8 +1034,6 @@ have covariates fixed in time (static), and (b) multiply the
 covariates by the times series (we used the average of cases and
 deaths)
 
-\end{description}
-
 We expected the second choice to be the most natural as it gives all
 35 input streams similar time dependence. However, in our initial
 tests, we found these choices gave very similar results, and so we
@@ -1335,7 +1338,7 @@ within the paper in Table~\ref{tab:risk-factors} on page
     NBDIF & NIST Big Data Working Group \\
     NCHS & CDC National Center for Health Statistics \\
     NIST & National Institute of Standards and Technology \\
-    NONE & \todo{NO FACTORS} \\
+    NONE & No risk factors used \\
     NORM\_POP & Normalized Population \\
     NSF & National Science Foundation \\
     RELU & REctified Linear Unit \\
