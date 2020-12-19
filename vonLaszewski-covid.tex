@@ -8,6 +8,7 @@
 \usepackage{calc}
 \usepackage{comment}
 \usepackage{todonotes}
+\setuptodonotes{inline}
 
 % color management
 
@@ -237,14 +238,14 @@ This section presents a short overview of the recurrent neural network algorithm
 % ------------------------------
 
 In this study, we used a Long Short-Term Memory (LSTM) algorithm for
-our predictions \cite{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
-recurrent neural network (RNN) \cite{Rumelhart1986-li} with feedback
+our predictions \citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
+recurrent neural network (RNN) \citep{Rumelhart1986-li} with feedback
 connections allowing the use of data input sequences to predict data
 output sequences. LSTMs have been applied to many application areas
-from handwriting \cite{Graves2009-qb}, image, feature detection, and
-time series prediction \cite{Schmidhuber2005-oy}. LSTM's have an
+from handwriting \citep{Graves2009-qb}, image, feature detection, and
+time series prediction \citep{Schmidhuber2005-oy}. LSTM's have an
 internal state that is used to prevent the vanishing gradient problem
-\cite{Hochreiter1991-mp} during the training of RNNs.
+\citep{Hochreiter1991-mp} during the training of RNNs.
 
 Different variants of LSTM algorithms exist. Ours is based on an LSTM
 cell depicted in Figure \ref{fig:lstm}.  It has an input gate, output
@@ -315,7 +316,7 @@ need to be learned during training.
 We often think of the laws of physics described by operators that
 evolve the system given sufficient initial conditions and in this
 language, we have shown how to represent Newton’s law operator by a
-recurrent network \cite{Kadupitiya2020-zq}. We expect that the time
+recurrent network \citep{Kadupitiya2020-zq}. We expect that the time
 dependence of many complex systems: Covid pandemics, Southern
 California earthquakes, traffic flow, security events can be described
 by deep learning operators that both capture the dynamics and allow
@@ -446,7 +447,7 @@ framework, AICov, and how we address each of these.
   utilization framework. \Solution To address this requirement, we
   leverage from our earlier work and utilize through Cloudmesh and
   NIST NBDIF definitions cloud services into the architecture
-  \cite{las-19-nist}. This includes containers but also infrastructure
+  \citep{las-19-nist}. This includes containers but also infrastructure
   services in the cloud. Through these service integrations, we also
   provide access to GPUs.
 \end{requirement}
@@ -480,7 +481,7 @@ Jupyter Notebooks. Compute interfaces are provided either by direct
 access of GPUs from local resources or through the staging of
 automatically generated REST services via our Cloudmesh REST Service
 integrator
-\cite{cloudmesh-openapi-install,cloudmesh-openapi-benchmark,cloudmesh-manual}. Additionally,
+\citep{cloudmesh-openapi-install,cloudmesh-openapi-benchmark,cloudmesh-manual}. Additionally,
 we can also access through abstractions cloud services that are
 offered by the various cloud providers and are targeting our
 application domain. Different models can be easily integrated into our
@@ -511,10 +512,10 @@ regular reporting of accurate Coronavirus outbreaks data from local
 health departments has been understandably difficult, especially in
 the areas that are hardest hit. We use data on community-specific
 health and behavioral risk factors aggregated at the county level from
-the large-scale longitudinal CDC BRFSS surveys \cite{www-cdc-brfss},
+the large-scale longitudinal CDC BRFSS surveys \citep{www-cdc-brfss},
 and demographic and socioeconomic data from the U.S. Census Bureau
 that are known at the local levels along with the cases and deaths
-data compiled by NCHS \cite{www-cdc-nchs} and integrate them with
+data compiled by NCHS \citep{www-cdc-nchs} and integrate them with
 other data sources.
 
 \subsection{Data Collection and Processing}
@@ -523,8 +524,8 @@ Among the different sources of data on daily cases and deaths data
 collected and aggregated at different spatial levels, especially for
 the U.S., many are either freely available repositories such as GitHub
 or accessible via specifically developed online resources such as the
-New York Times~\cite{github-nytimes} and the Johns Hopkins Coronavirus
-Resource Center~\cite{www-jh-covid19}.  For this study, we generated
+New York Times~\citep{github-nytimes} and the Johns Hopkins Coronavirus
+Resource Center~\citep{www-jh-covid19}.  For this study, we generated
 two data sets based on the latter resource upon our checking for the
 locations and times at which cumulative counts of COVID-19 cases and
 deaths on any given day were no less than those on the previous
@@ -539,7 +540,7 @@ different fields cover the domains of behavioral and health risk
 factors, hospital capacity, and socioeconomic and demographic
 conditions. Data on health outcomes, prevention measures, and
 unhealthy behaviors were extracted from the CDC's 500 Cities Local
-Data for Better Health program \cite{www-cdc-chronic-data} in the form
+Data for Better Health program \citep{www-cdc-chronic-data} in the form
 of crude or age-adjusted prevalence of conditions such as respiratory
 disease, obesity or smoking. These values were aggregated from the
 census tract to the county level using the first five digits of the
@@ -561,11 +562,11 @@ and dynamic data, we compute the population-weighted sum or median of
 each covariate over the assigned counties.
 
 Demographic variables were gathered from the Census
-QuickFacts~\cite{www-census} online resource using an automated web
+QuickFacts~\citep{www-census} online resource using an automated web
 scraping algorithm and cover relevant areas such as age, race, income,
 and population density. Additional socioeconomic variables include the
 Gini Index, which measures economic inequality and CDC Social
-Vulnerability Index (SVI)~\cite{www-cdc-svi}. The SVI was created to
+Vulnerability Index (SVI)~\citep{www-cdc-svi}. The SVI was created to
 guide public health officials and disaster response efforts by
 identifying the communities across the United States most likely to
 need support during a crisis. Census tracts and corresponding counties
@@ -579,7 +580,7 @@ variables included the number of relevant hospitals per county, and
 the estimated number of beds (total known bed counts added to the
 number of hospitals in the county with missing data times the average
 number of beds per hospital in that state) per 1,000 people using the
-American Hospital Directory~\cite{www-ahd}.
+American Hospital Directory~\citep{www-ahd}.
 
 The list of covariates is presented in Table \ref{tab:risk-factors}.
 
@@ -664,7 +665,7 @@ analysis, verified that through deep learning we can recreate the
 predictions identified by a model-based approach using empirical
 fits. In this comprehensive analysis, we obtain predictions through
 deep learning while using data generated from epidemiological models
-as discussed in \cite{marsland20-covid-paper}. The time series we used
+as discussed in \citep{marsland20-covid-paper}. The time series we used
 was 100 days long, and a multi-layered Long Short-Term Memory (LSTM)
 recurrent network was used. Our prediction approach differs by
 learning not only from the demographics (fixed data for each city) and
@@ -677,7 +678,7 @@ combination of general forecasts and the next time steps of choice,
 such as days, weeks, months, or longer. For this analysis, we used 37
 of the 110 cities with reliable empirical fits (that we derived from
 an epidemiological model and not deep learning
-\cite{marsland20-covid-paper}) for the cases and deaths data up to
+\citep{marsland20-covid-paper}) for the cases and deaths data up to
 April 15, 2020. Our analysis identified a sophisticated single deep
 learning time evolution operator that can describe these 37 separate
 data sets, and smooth fitted data leads to very accurate deep learning
@@ -719,7 +720,7 @@ Section \ref{sec:lstm-theory}. Hence, we will answer Questions
 To answer these questions, we chose for our next analysis a date range
 between 2020-02-01 and 2020-05-25. We start with a basic LSTM operator
 with two layers of LSTM, and initial and final fully connected layers
-\cite{Kadupitiya2020-zq}.  For LSTM, we have selected the activation
+\citep{Kadupitiya2020-zq}.  For LSTM, we have selected the activation
 function based on Rectified Linear Units (RELU). For the last layer
 sigmoid is chosen. A drop out rate of 0.2 is used, we use 16 input
 nodes, and have a batch size of 110. The maximum epoch is chosen to be
@@ -1016,7 +1017,7 @@ treatment. Furthermore, population parameters such as density can
 determine the rate of spread and the number of cases. Similarly,
 distributions of comorbidities in a given population such as physical
 health, cholesterol screening, diabetes, etc., are found to be
-insightful in predicting outcomes \cite{Maleki}. Identifying such risk
+insightful in predicting outcomes \citep{Maleki}. Identifying such risk
 factors and correlating them to the prediction accuracy provides
 valuable candidates for future studies.
 
@@ -1192,7 +1193,7 @@ NORM\_POP               & -0.305      & -0.258      & -0.218      & -0.193      
 \section{Conclusion}
 
 A variety of mathematical and computational models have been used for
-predicting COVID-19 outcomes \cite{Jewell}. It includes compartmental
+predicting COVID-19 outcomes \citep{Jewell}. It includes compartmental
 models such as the SIR (Susceptible-Infected-Recovered) and SEIR
 (Susceptible-Exposed-Infected-Recovered) which are relatively easy to
 compute, and thus, commonly used in epidemiology. However, their
@@ -1213,7 +1214,7 @@ the compartmental model estimates do not allow for quantification of
 uncertainty, which makes it harder to use them in policy-making. A
 comparison of modeling approaches concluded that while SEIR model
 performed better for a couple of states in the U.S., alternatives have
-performed better for the other states \cite{Bertozzi}. AICov has
+performed better for the other states \citep{Bertozzi}. AICov has
 addressed most of the above modeling issues in its design, as per the
 requirements of its forecasting objectives.
 
