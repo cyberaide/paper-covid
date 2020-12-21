@@ -1,10 +1,9 @@
 \documentclass[letterpaper, inpress]{jds} % use this for production
-
 %\documentclass[a4paper, review]{jds}      % use this for review
 \usepackage{lineno}
 \linenumbers
 
-
+\usepackage{subcaption}
 \usepackage{calc}
 \usepackage{comment}
 \usepackage{todonotes}
@@ -79,11 +78,11 @@
   framework that integrates population covariates from multiple
   sources. Thus, AICov not only includes data on COVID-19 cases and
   deaths but, more importantly, the population's socioeconomic,
-  health, and behavioral risk factors at a local level. The compiled
-  data are fed into AICov, and thus we obtain improved prediction by
-  the integration of the data to our model as compared to one that
-  only uses case and death data. As we use deep learning our models
-  adapt over time while learning the model from past data.}
+  health, and behavioral risk factors at their specific locations.
+  The compiled data are fed into AICov, and thus we obtain improved
+  prediction by the integration of the data to our model as compared
+  to one that only uses case and death data. As we use deep learning
+  our models adapt over time while learning the model from past data.}
 
 \title[AICov: Deep
     Learning Framework for COVID-19 Forecasting with Population
@@ -192,7 +191,7 @@ For precise and contextually relevant modeling of COVID-19 dynamics
 for a given population or community, we use data integration to
 combine community-specific health and behavioral risk factors,
 demographic and socioeconomic variables that are available at the
-local levels along with the cases and deaths data for COVID-19 while
+local along with the cases and deaths data for COVID-19 while
 leveraging the recently developed and increasingly popular deep
 learning strategies to forecast COVID-19 dynamics using our
 model. Towards this, we develop a parallel computing platform called
@@ -238,7 +237,7 @@ This section presents a short overview of the recurrent neural network algorithm
 \label{sec:lstm-background}
 % ------------------------------
 
-In this study, we used a Long Short-Term Memory (LSTM) algorithm for
+In this study, we used a LSTM algorithm for
 our predictions \citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
 Recurrent Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
 connections allowing the use of data input sequences to predict data
@@ -373,16 +372,16 @@ framework, AICov, and how we address each of these.
   analysis workflow through the ease of Python as programming
   language. Additionally, they enable us to formulate easily
   sophisticated scientific analytics workflows with the help of
-  Python.
+  Python and Jupyter Notebooks.
 \end{requirement}
 
 
 \begin{requirement}{\bf Expandable API.}
   Assuming that new models and other analysis algorithms will be
   developed over time, AICov must allow the integration of such
-  APIs. \Solution To address this requirement, we are developed an
-  abstraction API for data, analysis, and metadata parameter
-  adjustments. External services could be integrated with the help of
+  APIs. \Solution To address this requirement, we are developing an
+  abstract API for data, analysis, and metadata parameter
+  adjustments. External services can be integrated with the help of
   REST (REpresentational State Transfer) services. The REST services
   are automatically generated from function specifications.
 \end{requirement}
@@ -485,15 +484,16 @@ Jupyter Notebooks. Compute interfaces are provided either by direct
 access of GPUs from local resources or through the staging of
 automatically generated REST services via our Cloudmesh REST Service
 integrator
-\citep{cloudmesh-openapi-install,cloudmesh-openapi-benchmark,cloudmesh-manual}. Additionally,
-we can also access through abstractions cloud services that are
-offered by the various cloud providers and are targeting our
+\citep{cloudmesh-openapi-install,cloudmesh-openapi-benchmark,cloudmesh-manual}.
+Additionally, we can also access through abstractions cloud services
+that are offered by the various cloud providers and are targeting our
 application domain. Different models can be easily integrated into our
 framework to verify our forecast or enhance our forecast based on the
 users' models and data.
 
 \section{Data for the COVID-19 Analysis}
 \label{sec:data}
+
 
 While the U.S. has seen an overall case fatality rate of 5.14\%, some
 U.S. locations have experienced a disproportionate number of deaths
@@ -514,14 +514,24 @@ particular community’s vulnerabilities and strengths pertaining to the
 disease must be as comprehensive and integrative as possible.  The
 regular reporting of accurate Coronavirus outbreaks data from local
 health departments has been understandably difficult, especially in
-the areas that are hardest hit. We use data on community-specific
-health and behavioral risk factors aggregated at the county level from
-the large-scale longitudinal CDC Behavioral Risk Factor Surveillance
-System (BRFSS) surveys \citep{www-cdc-brfss}, and demographic and
-socioeconomic data from the U.S. Census Bureau that are known at the
-local levels along with the cases and deaths data compiled by the CDC
-National Center for Health Statistics (NCHS) \citep{www-cdc-nchs} and
-integrate them with other data sources.
+the areas that are hardest hit.
+%
+\linelabel{comment:level} We use data on community-specific health and
+behavioral risk factors aggregated at the county level from the
+large-scale longitudinal CDC Behavioral Risk Factor Surveillance
+System (BRFSS) surveys \citep{www-cdc-brfss} and demographic and
+socioeconomic data from the U.S. Census Bureau \cite{www-sensus},
+i.e., both at the county and census tract, along with the cases and
+deaths data compiled by the CDC National Center for Health Statistics
+(NCHS) \citep{www-cdc-nchs} and integrate them with other data
+sources. These other data sources include
+
+\todo{Pyne}.
+
+
+
+
+
 
 \subsection{Data Collection and Processing}
 
@@ -626,8 +636,6 @@ Risk Factor & Description \\
  OBESITY 	  & Percent reported with  population that is obese\\
  PHLTH        & Percent reported with physical health issues\\
  PVI 		  & Pandemic vulnerability index \\
- PERCENTBLACKS 	  & Percent of blacks in the population\\
- PERCENTHISPANICS & Percent of hispanics in the population\\
  STROKE 	  & Percent reported with stroke\\
  BLACK	  & Percent of Blacks in the population\\
  POVERTY & Percent of poverty in the population\\
@@ -672,7 +680,7 @@ predictions identified by a model-based approach using empirical
 fits. In this comprehensive analysis, we obtain predictions through
 deep learning while using data generated from epidemiological models
 as discussed in \citep{marsland20-covid-paper}. The time series we used
-was 100 days long, and a multi-layered Long Short-Term Memory (LSTM)
+was 100 days long, and a multi-layered LSTM
 recurrent network was used. Our prediction approach differs by
 learning not only from the demographics (fixed data for each city) and
 time-dependent data but by integrating the population model for the
@@ -695,7 +703,23 @@ that are smaller than 1\% from the model predictions.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics{images/magic-1.png}
+    \includegraphics[width=1.0\textwidth]{images/magic-1.png}
+
+    \begin{subfigure}{.4\textwidth}
+      \centering
+      % include first image
+      % \includegraphics[width=.8\linewidth]{image_file_name}  
+      \caption{Prediction acuracy for deaths.}
+      \label{fig:magic-a}
+    \end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+      \centering
+      % include second image
+      %\includegraphics[width=.8\linewidth]{image_file_name}  
+      \caption{Prediction acuracy for cases.}
+      \label{fig:magic-b}
+    \end{subfigure}
+
     \caption{Cumulative empirical fits can be very accurately
       predicted with LSTM. The data is taken from 37 U.S. Cities. Our
       comparison showcases that given a model, we can replicate the
@@ -731,10 +755,13 @@ function based on Rectified Linear Units (RELU). For the last layer
 sigmoid is chosen. A drop out rate of 0.2 is used, we use 16 input
 nodes, and have a batch size of 110. The maximum epoch is chosen to be
 200. The number of nodes internally is 32. The maximum total number of
-Samples is 12540 when using 3 days as input length. We use a two-layer
+samples is 12540 when using 3 days as input length. We use a two-layer
 LSTM, as shown in Table \ref{tab:model}. Within our system, we have
 the ability to set a number of input days. For this analysis, we have
-chosen three different input lengths, namely 3, 4, and 5 days.
+chosen three different input lengths, namely 3, 4, and 5 days. The
+term ``None'' in the output shape means this dimension is
+variable. For our model it is the batch size.  \todo{What is the batch
+size.}
 
 
 \begin{table}[!h]
@@ -816,18 +843,18 @@ follows:
 \begin{description}
 
 \item[Order for cases sorted by minimum model error:] NONE,
-  POP\_DENSITY\_2010, PHLTH, INSURANCE, PERCENTBLACKS,
-  PERCENTHISPANICS, NHOSP, INSURANCE, CHOLSCREEN, DIABETES, STROKE,
-  CHD, CHECKUP, NBEDS, SVI\_OVERALL, KIDNEY, CASTHMA, BLACK, BPMED,
+  POP\_DENSITY\_2010, PHLTH, INSURANCE, BLACK,
+  HISPANICS, NHOSP, CHOLSCREEN, DIABETES, STROKE,
+  CHD, CHECKUP, NBEDS, SVI\_OVERALL, KIDNEY, CASTHMA, BPMED,
   LPA, CSMOKING, ARTHRITIS, POVERTY, ESTBEDS, MHLTH, SENIOR, COPD,
   CANCER, NBEDS/1000, BPHIGH, HIGHCHOL, BINGE, OBESITY, SVI\_MINORITY
 
 \item[Order for deaths sorted by minimum model error:] NONE,
-  SVI\_OVERALL, CSMOKING, PERCENTHISPANICS, POP\_DENSITY\_2010,
-  SENIOR, CHOLSCREEN, CASTHMA, INSURANCE, INSURANCE, MHLTH, LPA,
-  POVERTY, OBESITY, CANCER, BLACK, NBEDS/1000, PERCENTBLACKS,
-  DIABETES, ARTHRITIS, NBEDS, NHOSP, BPHIGH, CHECKUP, PHLTH, CHD,
-  STROKE, HIGHCHOL, ESTBEDS, KIDNEY, BINGE, BPMED, COPD, SVI\_MINORITY
+  SVI\_OVERALL, CSMOKING, HISPANICS, POP\_DENSITY\_2010,
+  SENIOR, CHOLSCREEN, CASTHMA, INSURANCE, MHLTH, LPA,
+  POVERTY, OBESITY, CANCER, BLACK, NBEDS/1000, DIABETES, ARTHRITIS,
+  NBEDS, NHOSP, BPHIGH, CHECKUP, PHLTH, CHD, STROKE, HIGHCHOL,
+  ESTBEDS, KIDNEY, BINGE, BPMED, COPD, SVI\_MINORITY
 \end{description}
 
 We show the errors and the association with a risk factor in Table
@@ -860,37 +887,35 @@ many of these factors perform better on average.
 1 & POP\_DENSITY\_2010 & 0.055443 & 0.067617 & 7.94 & 22.74 & 5 \\
 2 & PHLTH & 0.054795 & 0.068529 & 8.01 & 20.55 & 3 \\
 3 & INSURANCE & 0.055199 & 0.067641 & 8.07 & 20.43 & 4 \\
-4 & PERCENTBLACKS & 0.055028 & 0.067207 & 8.12 & 20.17 & 4 \\
-5 & PERCENTHISPANICS & 0.056061 & 0.067489 & 8.22 & 19.04 & 5 \\
+4 & BLACK & 0.055028 & 0.067207 & 8.12 & 20.17 & 4 \\
+5 & HISPANIC & 0.056061 & 0.067489 & 8.22 & 19.04 & 5 \\
 6 & NHOSP & 0.054621 & 0.068255 & 8.26 & 20.10 & 3 \\
-7 & INSURANCE & 0.054557 & 0.068572 & 8.34 & 24.61 & 3 \\
-8 & CHOLSCREEN & 0.054712 & 0.069121 & 8.37 & 21.70 & 3 \\
-9 & DIABETES & 0.054586 & 0.067636 & 8.40 & 20.50 & 5 \\
-10 & STROKE & 0.054160 & 0.066906 & 8.45 & 20.16 & 4 \\
-11 & CHD & 0.054027 & 0.067642 & 8.46 & 21.93 & 5 \\
-12 & CHECKUP & 0.054927 & 0.067652 & 8.51 & 20.42 & 5 \\
-13 & NBEDS & 0.054146 & 0.067536 & 8.54 & 21.15 & 5 \\
-14 & SVI\_OVERALL & 0.054795 & 0.067676 & 8.58 & 19.94 & 5 \\
-15 & KIDNEY & 0.054600 & 0.067565 & 8.61 & 21.86 & 5 \\
-16 & CASTHMA & 0.055089 & 0.068248 & 8.63 & 22.58 & 5 \\
-17 & BLACK & 0.054547 & 0.068266 & 8.68 & 20.49 & 3 \\
-18 & BPMED & 0.054685 & 0.068920 & 8.74 & 21.69 & 3 \\
-19 & LPA & 0.054323 & 0.067149 & 8.75 & 19.54 & 5 \\
-20 & CSMOKING & 0.053716 & 0.066898 & 8.75 & 19.01 & 5 \\
-21 & ARTHRITIS & 0.054053 & 0.068716 & 8.83 & 20.94 & 3 \\
-22 & POVERTY & 0.055029 & 0.068672 & 8.84 & 22.02 & 3 \\
-23 & ESTBEDS & 0.054545 & 0.067267 & 8.86 & 21.22 & 4 \\
-24 & MHLTH & 0.054864 & 0.068742 & 8.90 & 19.53 & 3 \\
-25 & SENIOR & 0.055079 & 0.069024 & 8.93 & 21.23 & 3 \\
-26 & COPD & 0.055589 & 0.068250 & 8.93 & 23.26 & 4 \\
-27 & CANCER & 0.054500 & 0.068363 & 8.99 & 19.70 & 3 \\
-28 & NBEDS/1000 & 0.054397 & 0.068491 & 9.05 & 21.89 & 3 \\
-29 & BPHIGH & 0.054609 & 0.067346 & 9.13 & 21.29 & 4 \\
-\rowcolor{black!5} 30 & NONE & 0.054868 & 0.069432 & 9.26 & 25.88 & 3 \\
-31 & HIGHCHOL & 0.056429 & 0.069345 & 9.28 & 20.98 & 3 \\
-32 & BINGE & 0.054317 & 0.067638 & 9.32 & 21.00 & 5 \\
-33 & OBESITY & 0.054469 & 0.068540 & 9.50 & 20.65 & 3 \\
-34 & SVI\_MINORITY & 0.055094 & 0.067443 & 9.54 & 21.53 & 4 \\
+7 & CHOLSCREEN & 0.054712 & 0.069121 & 8.37 & 21.70 & 3 \\
+8 & DIABETES & 0.054586 & 0.067636 & 8.40 & 20.50 & 5 \\
+9 & STROKE & 0.054160 & 0.066906 & 8.45 & 20.16 & 4 \\
+10 & CHD & 0.054027 & 0.067642 & 8.46 & 21.93 & 5 \\
+11 & CHECKUP & 0.054927 & 0.067652 & 8.51 & 20.42 & 5 \\
+12 & NBEDS & 0.054146 & 0.067536 & 8.54 & 21.15 & 5 \\
+13 & SVI\_OVERALL & 0.054795 & 0.067676 & 8.58 & 19.94 & 5 \\
+14 & KIDNEY & 0.054600 & 0.067565 & 8.61 & 21.86 & 5 \\
+15 & CASTHMA & 0.055089 & 0.068248 & 8.63 & 22.58 & 5 \\
+16 & BPMED & 0.054685 & 0.068920 & 8.74 & 21.69 & 3 \\
+17 & LPA & 0.054323 & 0.067149 & 8.75 & 19.54 & 5 \\
+18 & CSMOKING & 0.053716 & 0.066898 & 8.75 & 19.01 & 5 \\
+19 & ARTHRITIS & 0.054053 & 0.068716 & 8.83 & 20.94 & 3 \\
+20 & POVERTY & 0.055029 & 0.068672 & 8.84 & 22.02 & 3 \\
+21 & ESTBEDS & 0.054545 & 0.067267 & 8.86 & 21.22 & 4 \\
+22 & MHLTH & 0.054864 & 0.068742 & 8.90 & 19.53 & 3 \\
+23 & SENIOR & 0.055079 & 0.069024 & 8.93 & 21.23 & 3 \\
+24 & COPD & 0.055589 & 0.068250 & 8.93 & 23.26 & 4 \\
+25 & CANCER & 0.054500 & 0.068363 & 8.99 & 19.70 & 3 \\
+26 & NBEDS/1000 & 0.054397 & 0.068491 & 9.05 & 21.89 & 3 \\
+27 & BPHIGH & 0.054609 & 0.067346 & 9.13 & 21.29 & 4 \\
+\rowcolor{black!5} 28 & NONE & 0.054868 & 0.069432 & 9.26 & 25.88 & 3 \\
+29 & HIGHCHOL & 0.056429 & 0.069345 & 9.28 & 20.98 & 3 \\
+30 & BINGE & 0.054317 & 0.067638 & 9.32 & 21.00 & 5 \\
+31 & OBESITY & 0.054469 & 0.068540 & 9.50 & 20.65 & 3 \\
+32 & SVI\_MINORITY & 0.055094 & 0.067443 & 9.54 & 21.53 & 4 \\
 \bottomrule
 \end{tabular}
 %}
@@ -1164,7 +1189,7 @@ NHOSP                   & 0.074       & 0.119       & 0.165       & -0.009      
 ESTBEDS                 & 0.136       & 0.131       & 0.217       & 0.089       & 0.080        & 0.109     \\
 SENIOR                  & 0.104       & 0.028       & 0.033       & 0.152       & 0.164       & 0.156     \\
 BLACK                   & 0.209       & 0.099       & 0.208       & 0.216       & 0.085       & 0.116     \\
-HISPANICS               & -0.072      & -0.032      & -0.064      & -0.091      & -0.068      & -0.046    \\
+HISPANIC                & -0.072      & -0.032      & -0.064      & -0.091      & -0.068      & -0.046    \\
 POP\_DENSITY\_2010      & -0.302      & -0.210      & -0.175      & -0.272      & -0.231      & -0.216    \\
 POVERTY                 & 0.128       & 0.059       & 0.200       & 0.148       & 0.031       & 0.080     \\
 SVI\_MINORITY           & 0.029       & 0.069       & 0.081       & 0.010        & 0.006       & 0.087     \\

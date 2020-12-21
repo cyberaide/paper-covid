@@ -25,7 +25,6 @@ REVISION DUE: 01.12.2021
   they can be used in the refernces. The jdsurl.bst is included in the
   source.}
 
-\end{enumerate}
 
 
 \section*{Reviewer 1}
@@ -66,20 +65,8 @@ additional editorial suggestions:
   {All acronyms have been defined at their first usage. In addition
     we have added a section Acronyms in which all acronyms are listed
     to make it easier for the reader to look them up in case they are
-    used later on in the paper.
-
-    All riskfactors have been capitalized.
-
-
-TODO. PERCENT, PERCENTBALCK, BLACK PERCENT, also for hispanics and senior
-
-TODO. use risk factor in table headings
-
-TODO. PER1000 is /1000
-
-TODO. make acronyms appear in text
-
-TODO. Table 1. capitalization,explain why they are different or make them the same
+    used later on in the paper. All riskfactors have been capitalized.
+    The duplicated Risk factors were removed.
   }
   
 
@@ -104,8 +91,8 @@ TODO. Table 1. capitalization,explain why they are different or make them the sa
     resizebox.}
 
 \REVIEW{DONE}{Table 3: tidy the headers.}
-  { The headers have been cleaned up and linebreaks wer introduced so
-    the resizebox of the table presents the table now larger} }
+  { The headers have been cleaned up and linebreaks were introduced so
+    the resizebox of the table presents the table now larger} 
 
 \REVIEW{TODO}{Figure 5-6: can be combined to one figure with two
   panels (using ggplot2 and save the space of the labels of the
@@ -122,10 +109,9 @@ TODO. Table 1. capitalization,explain why they are different or make them the sa
   { todo}
 
 
-\REVIEW{DONE}{Table 4: keep the number of digits consistent.
+\REVIEW{DONE}{Table 4: keep the number of digits consistent.}{
    The digits have been padded with the missing 0 to make them all
     the same length}
-  { todo}
   
 \REVIEW{TODO}{Reproducibility: submit data/code/README in a
   compressed file as supplementary material, or put them in a public
@@ -159,19 +145,42 @@ shape. Please see my comments.
 
 
 
-\REVIEW{TODO}{Page 5, line 3 under Requirement 3, “we are developed an
+\REVIEW{DONE}{Page 5, line 3 under Requirement 3, “we are developed an
   abstraction API for data” does not read right.
 }
-  { todo}
+  {The sentence has been corrected to: ``To address this requirement, we are developing an
+  abstract API for data, analysis, and metadata parameter
+  adjustments.''}
 
 
 \REVIEW{TODO}{Page 6, line 8, what level is “local level”?
 }
-  { todo}
+  {PYNE: todo
 
+  (a) Absract: the term local level has been removed from the abstract and
+  replaced by at their ``specific locations''.
 
+  (b) Introduction: The term ``local level'' has been replaced with local which
+  according to an editor is suffiecient to refer to data that is
+  available for a locality.
 
-\REVIEW{PROGRESS} Page 7, Table 1, is “CHD” also a percent? If
+  (c) Line \linelabel{comment:level}  ``local level'' has been cahnged as follows
+  
+We use data on community-specific health and behavioral risk factors
+aggregated at the county level from the large-scale longitudinal CDC
+Behavioral Risk Factor Surveillance System (BRFSS) surveys
+\citep{www-cdc-brfss} and demographic and socioeconomic data from the
+\citet{www-sensus}, i.e., both at the county and
+census tract, along with the cases and deaths data compiled by
+the CDC National Center for Health Statistics (NCHS)
+\citep{www-cdc-nchs} and integrate them with other data sources. These
+other data sources include
+
+\todo{Pyne}.
+
+}
+
+\REVIEW{PROGRESS}{ Page 7, Table 1, is “CHD” also a percent? If
   yes please modify the description; Percent- blacks and black percent
   both correspond to “Percent of blacks in the population”. Both seem
   to have been used according to Table 3, with difference in the four
@@ -184,14 +193,14 @@ shape. Please see my comments.
     populations. This however has since than corrected and we have
     been able to use just one population value.
 
-    \todo{fix the values and only have one population value}}
+    TODO. fix the values and only have one population value}
 
 
 
-\REVIEW{TODO}{Page 8, line 5 of Section 5.1, the abbreviation LSTM has
-  already appeared before, and the full name can be removed.
-}
-  { todo}
+\REVIEW{DONE}{Page 8, line 5 of Section 5.1, the abbreviation LSTM has
+  already appeared before, and the full name can be removed.}
+{All acronyms have been defined at first usage. A table has been added
+  at the end to make it easier for the reader to look them up.}
 
 
 \REVIEW{TODO}{What do the two panels in Figure 4 represent? Please give
@@ -200,11 +209,14 @@ shape. Please see my comments.
   { todo}
 
 
-\REVIEW{TODO}{Section 5.2, paragraph 2 line 6, no need to capitalize for
+\REVIEW{DONE}{Section 5.2, paragraph 2 line 6, no need to capitalize for
   the word “Samples”. Line 5 from the bottom, no need to capitalize
   for the word “Insurance”. Please be careful with your writing.
 }
-  { todo}
+{The capitaization has been corrected. The paper has been reviewed by
+  2 native English speakers. In addition 2 grammar checking programs
+  were used on the entire paper. One of the reviewers serves also as
+  editor in other journals.}
 
 
 \REVIEW{TODO}{Section 5.2, the “order for cases sorted by minimum model
@@ -284,7 +296,5 @@ shape. Please see my comments.
 }
   { todo}
 
-
-\end{enumerate}
 
 \clearpage
