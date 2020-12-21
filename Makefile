@@ -11,12 +11,11 @@ $(FILENAME).pdf: $(FILENAME).tex
 	latexmk -quiet -bibtex $(PREVIEW_CONTINUOUSLY) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make $(FILENAME).tex
 
 .PRECIOUS: %.pdf
-.PHONY: watch
+.PHONY: watch clean
+
 
 watch: PREVIEW_CONTINUOUSLY=-pvc
 watch: $(FILENAME).pdf
-
-.PHONY: clean
 
 clean:
 	latexmk -C -bibtex

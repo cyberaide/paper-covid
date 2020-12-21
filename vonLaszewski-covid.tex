@@ -258,6 +258,10 @@ unit. A cell has a number of inputs and outputs that are
 weighted. During a training step, these weights are learned to be
 reused in a prediction process between input and output sequences.
 
+
+\todo{USE NEW REF: \cite{lstm-explained}}
+\todo{arrow on tanh is wrong}
+
 \begin{figure}[h!]
 \begin{minipage}[b]{0.6\textwidth}
     \centering
@@ -818,7 +822,7 @@ deaths.
 
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_cases.pdf}
+    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_casesNEW.pdf}
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 cases. The y-axis represents the
@@ -826,7 +830,7 @@ deaths.
     \label{fig:box-cases}
     \bigskip
 
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_death.pdf}
+    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_deathNEW.pdf}
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 death. The y-axis represents the
@@ -931,23 +935,27 @@ cases. To showcase this, we have included Figures
 that show the respective errors.
 
 \begin{figure}[!h]
+  \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.png}
+    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.png}
     %\vspace{-1cm}
-    \caption{Model prediction error for cumulative cases when
-      including one risk factor - POP\_DENSITY\_2010 in the features,
-      in addition to the past number of cases and deaths.}
+    \caption{Model prediction error cases.}
     \label{fig:error-case-popdensity}
-\end{figure}
-    
-\begin{figure}[!h]    
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.png}
+    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.png}
     %\vspace{-1cm}
+    \caption{Model prediction error deaths.}
+    \label{fig:error-death-popdensity}
+    \end{subfigure}
+
     \caption{Model prediction error for cumulative deaths when
-      including one risk factor - POP\_DENSITY\_2010 in the features,
+      including one risk factor POP\_DENSITY\_2010
       in addition to the past number of cases and deaths.}
     \label{fig:error-death-popdensity}
+  
+    
 \end{figure}
 
 
@@ -968,73 +976,74 @@ re-train the model with new incoming data every day. Through repeated
 training experiments, we found the LSTM hyperparameters such as epochs
 and dropout values that work well for our experiments.
 
-We conducted one additional analysis and plotted the best risk factor
-prediction model errors, the five best, and the ten best from our
-experiments to identify if we have better predictions than by
-including no risk factor. The best result found with no risk factor is
-depicted with the black horizontal
-line. Figures~\ref{fig:place-top1-cases} to
-\ref{fig:place-top10-death} show the results sorted by the minimized
-error. Notably, we identified that a jump occurs when we sort the top
-10 model predictions at around 330 models from a total of 3400
+We conducted one additional analysis and plotted the top 10 best
+cummulative prediction model errors for each risk factor in
+Figure \label{fig:place-top10} for cases and deaths.  The horizontal
+black line shows the first occurance of no risk factor being used.
+
+Notably, we identified that a jump occurs when we sort the top 10
+model predictions at around 330 models from a total of 3400
 automatically generated models. This also underscores the need to run
 our deep learning model multiple times to obtain best parameter
-candidates.
+candidates.  Furthermore, we see that the cummulative error for cases
+is about half the size as for death. This is caused by cases having a
+larger number of sample.
 
+% In case of cases we also see a drop in the better
+% model predictions. 
 
 
 
 \begin{figure}[!h]
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop1_Cases.pdf}
-        \vspace{-1cm}
-        \caption{Best predictions for cases over all risk factors.}
-        \label{fig:place-top1-cases}
+%    \begin{minipage}{.45\textwidth}
+%        \centering
+%        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop1_Cases.pdf}
+%        \vspace{-1cm}
+%        \caption{Best predictions for cases over all risk factors.}
+%        \label{fig:place-top1-cases}
+%
+%    \end{minipage}
+%    \ \
+%    \begin{minipage}{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop1_Death.pdf}
+%        \vspace{-1cm}
+%        \caption{Best predictions for deaths over all risk factors.}
+%        \label{fig:place-top1-death}
+%    \end{minipage}
 
-    \end{minipage}
-    \ \
-    \begin{minipage}{0.45\textwidth}
+%    \begin{minipage}{.45\textwidth}
+%        \centering
+%        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop5_Cases.pdf}
+%        \vspace{-1cm}
+%        \caption{Top 5 predictions from all cases over all risk factors.}
+%        \label{fig:place-top5-cases}
+%    \end{minipage}
+%    \ \
+%    \begin{minipage}{.45\textwidth}
+%        \centering
+%        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop5_Death.pdf}
+%        \vspace{-1cm}
+%        \caption{Top 5 predictions from all deaths  over all risk factors.}
+%        \label{fig:place-top5-death}
+%    \end{minipage}
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop1_Death.pdf}
-        \vspace{-1cm}
-        \caption{Best predictions for deaths over all risk factors.}
-        \label{fig:place-top1-death}
-    \end{minipage}
-
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop5_Cases.pdf}
-        \vspace{-1cm}
-        \caption{Top 5 predictions from all cases over all risk factors.}
-        \label{fig:place-top5-cases}
-    \end{minipage}
-    \ \
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop5_Death.pdf}
-        \vspace{-1cm}
-        \caption{Top 5 predictions from all deaths  over all risk factors.}
-        \label{fig:place-top5-death}
-    \end{minipage}
-
-    \begin{minipage}{.45\textwidth}
-        
-        \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
-        \vspace{-1cm}
-        \caption{Top 10 predictions from all deaths  over all risk factors.}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesNEW.pdf}
+        \caption{Cummulative error for cases}
         \label{fig:place-top10-cases}
-    \end{minipage}
-    \ \
-    \begin{minipage}{.45\textwidth}
-        
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Death.pdf}
-        \vspace{-1cm}
-        \caption{Top 10 predictions from all deaths over all risk factors.}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_DeathNEW.pdf}
+        \caption{Cumulatice error for deaths.}
         \label{fig:place-top10-death}
-    \end{minipage}
+    \end{subfigure}
+
+    \caption{Top 10 predictions from all differnt risk factors sorted by cummulative error for cases and deaths.}
+    \label{fig:place-top10}
+    
+    
 \end{figure}
 
 
