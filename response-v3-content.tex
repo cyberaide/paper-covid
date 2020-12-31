@@ -1,4 +1,6 @@
 
+
+
 \definecolor{PROGRESS}{cmyk}{0.10, 0.10, 0.0, 0.0, 1.00}
 \definecolor{TODO}{cmyk}{0.0, 0.10, 0.10, 0.00, 1.00}
 \definecolor{DONE}{cmyk}{0.10, 0.0, 0.10, 0.0, 1.0}
@@ -15,6 +17,35 @@
 
 REVISION DUE: 01.12.2021
 
+\begin{itemize}
+\item Manuscript ID JDS2007-001 to Journal of Data Science.
+
+\item \url{http://jds.ruc.edu.cn/EN/column/item8.shtml}
+
+\item \url{http://jds.ruc.edu.cn/EN/column/column3.shtml}
+
+\item Progress: \url{https://www.e-publications.org/ruc/sbs/JDS/} 
+
+\end{itemize}
+
+
+
+\bigskip
+
+\parindent 0pt We are happy to resubmit our paper and are very thankful for the great reviews we received. 
+
+If possible we would like to acknowledge the reviewers by name in the
+acknowledgement section, but this depends on them and you.
+
+
+
+``AICov: A Deep Learning Framework for COVID-19 Forecastingwith
+CovariatesAICov: An Integrative Deep Learning Framework for
+COVID-19Forecasting with Covariates''
+
+Manuscript ID JDS2007-001 to Journal of Data Science.
+
+Progress: \url{https://www.e-publications.org/ruc/sbs/JDS/} 
 
 
 
@@ -62,7 +93,7 @@ additional editorial suggestions:
     intelligence enhanced COVID-19 analysis (in short AICov)''
   in the abstract. We also defined COVID-10 in the abstract.}
 
-\REVIEW{PROGRESS}{Acronyms need to be defined at their first occurrences
+\REVIEW{DONE}{Acronyms need to be defined at their first occurrences
   (e.g., AI in the intro). An acronyme table is included in table 1,
   we added the following acronyms to the paper}
   {All acronyms have been defined at their first usage. In addition
@@ -81,9 +112,9 @@ additional editorial suggestions:
   { todo}
 
 
-\REVIEW{TODO}{Regenerate the figures into pdf format (the current
+\REVIEW{DONE}{Regenerate the figures into pdf format (the current
   jpg/png figures blur when zoomed in).}
-  { todo}
+  {All images have been included as PDF images}
 
 
 \REVIEW{DONE}{Table 2: consider reformating it; it would not fit the
@@ -97,15 +128,15 @@ additional editorial suggestions:
   { The headers have been cleaned up and linebreaks were introduced so
     the resizebox of the table presents the table now larger} 
 
-\REVIEW{TODO}{Figure 5-6: can be combined to one figure with two
+\REVIEW{DONE}{Figure 5-6: can be combined to one figure with two
   panels (using ggplot2 and save the space of the labels of the
   horizontal axis).  }
-  { todo}
+  {The figures were combined as subfigures into Figure \ref{fig:magic-1} (a) and (b)}
 
 
-\REVIEW{TODO}{Figure 7-8: can be one figure with two panels; pop
+\REVIEW{DONE}{Figure 7-8: can be one figure with two panels; pop
   density 2010 needs to be cleaned.}
-  { todo}
+    {The figures were combined as subfigures into Figure \ref{fig:error-death-popdensity} (a) and (b)}
 
 
 \REVIEW{PROGRESS}{Figure 9-14: combine into one figure.}
@@ -121,15 +152,16 @@ sufficient. At this tiem we still have included them in a subfigure
 (a) and (b) in the paper as the scales on the y axis are
 different. Please let us know what you think and we can adapt this.
 
-\begin{figure}[!h]
+%\begin{figure}[!h]
+{
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesAndDeath.pdf}
+        \includegraphics[width=.9\textwidth]{images/predict/PlaceTop10_CasesAndDeathNEW2.pdf}
         
         {\bf Figure Combined} Best predictions for cases over all risk factors.
-        
+The two vertical lines represent the experiment in which no additional Risk factor is used for training. The top one for deaths and the bottom one for cases.}        
         %\label{fig:place-top10-joint}
 
-\end{figure}
+%\end{figure}
 
 }
 
@@ -266,19 +298,31 @@ other data sources include
   { todo}
 
 
-\REVIEW{TODO}{Please adjust the location of your figures so they do not
+\REVIEW{DONE}{Please adjust the location of your figures so they do not
   look pages apart from their interpretations.
 }
-  { todo}
+  {The location have een adjusted, but LaTeX tries to optimize the
+  placement. We have used the !h flag to force placement. If this
+  placement is still not sufficient please let us know. We also
+  removed images in order to facilitatie better placement. The
+  document is submitted in drafts mode which also could influence the
+  placement. We have tried the document in final mode with the LaTeX
+  style and it seems the placement is now fixed as we removed images.}
 
 
-\REVIEW{TODO}{If I am reading it correctly, Figures 9 and 11 are only
+\REVIEW{DONE}{If I am reading it correctly, Figures 9 and 11 are only
   the “zoom in” versions of partial information from Figure
   13. Similarly for the right column. Why waste space on two more
   figures when you could make Figures 13 and 14 bigger and explain the
   findings?
 }
-  { todo}
+  {We have provided in an earlier comment that we now only include the
+  Top 10 instead of Top 1, and Top 5 to fulfull the desire of the
+  reviewers to have these images combined. However we still separated
+  the deaths from teh cases view to ease the readers ability to see
+  more details. HOwever we can easily replace the image with the one
+  provided earlier if the reviewers desire. This is a small change and
+  will appreciate the revieers feedback on this further.}
 
 
 \REVIEW{TODO}{The last paragraph of Section 5.2 suits the

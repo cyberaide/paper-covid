@@ -41,7 +41,7 @@
 \jdsvolume{xx}                  % volume number
 \jdsissue{xx}                   % issue number
 \jdsdoi{xx.xxxx/xxxxxxxxx}      % doi
-\jdsreceived{???, 2020}       % optional: comment it out if no received date
+\jdsreceived{Jun 30, 2020}       % optional: comment it out if no received date
 \jdsaccepted{???, 2021}         % optional: comment it out if no accepted date
 %% manually set running header for a shorter list of authors if needed
 % \shortauthors{A Author A, et al.}
@@ -52,6 +52,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsfonts,amsmath,amssymb,amsthm}
 \usepackage{booktabs}
+
 
 
 \newtheorem{requirement}{Requirement}
@@ -229,7 +230,8 @@ present our conclusion.
 \section{LSTM}
 \label{sec:lstm-theory}
 
-This section presents a short overview of the recurrent neural network algorithms used in this work.
+This section presents a short overview of the recurrent neural network
+algorithms used in this work.
 
 
 % ------------------------------
@@ -237,9 +239,9 @@ This section presents a short overview of the recurrent neural network algorithm
 \label{sec:lstm-background}
 % ------------------------------
 
-In this study, we used a LSTM algorithm for
-our predictions \citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
-Recurrent Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
+In this study, we used a LSTM algorithm for our predictions
+\citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a Recurrent
+Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
 connections allowing the use of data input sequences to predict data
 output sequences. LSTMs have been applied to many application areas
 from handwriting \citep{Graves2009-qb}, image, feature detection, and
@@ -356,7 +358,7 @@ framework, AICov, and how we address each of these.
 %\newcommand{\Solution}{{\bf Solution: }}
 \newcommand{\Solution}{}
 
-\begin{requirement}{\bf Ease of Use.}
+\begin{requirement}{\bf Ease of Use.} \normalfont
   A major design criterion for AICov is that the framework must be
   easy to use, and extensions can be made to allow usability of both
   the Application Programming Interfaces (API) as well as the user
@@ -367,7 +369,7 @@ framework, AICov, and how we address each of these.
 \end{requirement}
 
 
-\begin{requirement}{\bf Interactive Access.}
+\begin{requirement}{\bf Interactive Access.} \normalfont
   Due to the experimental nature of analyzing the data, AICov must
   support the exploration of the data in an interactive
   fashion. \Solution As many data scientists use Jupyter Notebooks to
@@ -380,7 +382,7 @@ framework, AICov, and how we address each of these.
 \end{requirement}
 
 
-\begin{requirement}{\bf Expandable API.}
+\begin{requirement}{\bf Expandable API.} \normalfont
   Assuming that new models and other analysis algorithms will be
   developed over time, AICov must allow the integration of such
   APIs. \Solution To address this requirement, we are developing an
@@ -391,7 +393,7 @@ framework, AICov, and how we address each of these.
 \end{requirement}
 
 
-\begin{requirement}{\bf Flexible Data Source Integration.}
+\begin{requirement}{\bf Flexible Data Source Integration.} \normalfont
   The integration of various sources of data is a key part of
   AICov. \Solution To achieve this goal, we provide a number of
   abstractions and data manipulation functions to extract needed data
@@ -407,7 +409,7 @@ framework, AICov, and how we address each of these.
   significant impact on our analytics algorithms.
 \end{requirement}
 
-\begin{requirement}{\bf Automated Update of the Analytics.}
+\begin{requirement}{\bf Automated Update of the Analytics.} \normalfont
   As the data can change, previous analyses may have to be
   updated. \Solution Our forecast is not just a single script but
   includes a mechanism to register multiple workflows of continuously
@@ -417,7 +419,7 @@ framework, AICov, and how we address each of these.
   sets used to calculate and store the versioned analytics workflow.
 \end{requirement}
 
-\begin{requirement}{\bf Flexible Model definition.}
+\begin{requirement}{\bf Flexible Model definition.} \normalfont
   We want to allow experimentation with various models in AICov that
   may be easily and flexibly definable as workflows. \Solution We give
   functional abstraction definitions that enables us to define the
@@ -425,7 +427,7 @@ framework, AICov, and how we address each of these.
   spread of the disease.
 \end{requirement}
 
-\begin{requirement}{\bf Deep Learning Forecast.}
+\begin{requirement}{\bf Deep Learning Forecast.} \normalfont
   As the forecasting models depend on changing data that are made
   available daily, it is important for AICov to utilize the newly
   available data. Many models can be applied to this, including moving
@@ -436,7 +438,7 @@ framework, AICov, and how we address each of these.
   factors, which is the focus of this study.
 \end{requirement}
 
-\begin{requirement}{\bf Model Orchestration.}
+\begin{requirement}{\bf Model Orchestration.} \normalfont
   To coordinate the different model predictions and the generation of
   the deep learning forecasts, we need the ability to orchestrate them
   while applying a number of parameters. \Solution To address this
@@ -447,7 +449,7 @@ framework, AICov, and how we address each of these.
   fits the best.
 \end{requirement}
 
-\begin{requirement}{\bf Compute Resource Mapping.}
+\begin{requirement}{\bf Compute Resource Mapping.} \normalfont
   For other uses of AICov, we need to integrate a flexible resource
   utilization framework. \Solution To address this requirement, we
   leverage from our earlier work and utilize through Cloudmesh and
@@ -459,7 +461,7 @@ framework, AICov, and how we address each of these.
   (GPUs).
 \end{requirement}
 
-\begin{requirement}{\bf Convenient Interfaces.}
+\begin{requirement}{\bf Convenient Interfaces.} \normalfont
   As we have a wide variety of users, we need to enable interfaces
   that are used by the various communities. \Solution To address this
   requirement, we provide a number of APIs, REST services and make
@@ -656,24 +658,21 @@ Risk Factor & Description \\
 
 We have conducted a number of analysis efforts to evaluate the validity of our approach. We focus on the following questions:
 
-\begin{question} Can we apply deep learning strategies that self-learn the behavior of a model in order to provide future predictions? See Section \ref{sec:emperical}.
+\begin{question} \normalfont Can we apply deep learning strategies that self-learn the behavior of a model in order to provide future predictions? See Section \ref{sec:emperical}.
 \label{q:1}
 \end{question}
 
-\begin{question} Can we use real time data as input and apply deep learning strategies instead of models that self learn and provide future predictions? See Section \ref{sec:lstm-covariate}.
+\begin{question} \normalfont Can we use real time data as input and apply deep learning strategies instead of models that self learn and provide future predictions? See Section \ref{sec:lstm-covariate}.
 \label{q:2}
 \end{question}
 
-\begin{question} Does the inclusion of covariates improve the prediction quality while including geospatial and socio-economic risk factors? See Section \ref{sec:lstm-covariate}.
+\begin{question} \normalfont Does the inclusion of covariates improve the prediction quality while including geospatial and socio-economic risk factors? See Section \ref{sec:lstm-covariate}.
 \label{q:3}
 \end{question}
 
-\begin{question} What impact do we see when we introduce many risk factors? See Section \ref{sec:lstm-many}.
+\begin{question} \normalfont What impact do we see when we introduce many risk factors? See Section \ref{sec:lstm-many}.
 \label{q:4}
 \end{question}
-
-
-
 
 \subsection{Deep Learning Predictions of Model-based Empirical Fits} 
 \label{sec:emperical}
@@ -707,19 +706,16 @@ that are smaller than 1\% from the model predictions.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/magic-1.png}
 
-    \begin{subfigure}{.4\textwidth}
+    \begin{subfigure}{.49\textwidth}
       \centering
-      % include first image
-      % \includegraphics[width=.8\linewidth]{image_file_name}  
+      \includegraphics[width=1.0\linewidth]{images/predict/Fig4a.pdf}  
       \caption{Prediction acuracy for deaths.}
       \label{fig:magic-a}
     \end{subfigure}
-    \begin{subfigure}{.4\textwidth}
+    \begin{subfigure}{0.49\textwidth}
       \centering
-      % include second image
-      %\includegraphics[width=.8\linewidth]{image_file_name}  
+      \includegraphics[width=1.0\linewidth]{images/predict/Fig4b.pdf}        
       \caption{Prediction acuracy for cases.}
       \label{fig:magic-b}
     \end{subfigure}
@@ -937,14 +933,14 @@ that show the respective errors.
 \begin{figure}[!h]
   \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.png}
+    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.pdf}
     %\vspace{-1cm}
     \caption{Model prediction error cases.}
     \label{fig:error-case-popdensity}
   \end{subfigure}
   \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.png}
+    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.pdf}
     %\vspace{-1cm}
     \caption{Model prediction error deaths.}
     \label{fig:error-death-popdensity}
@@ -1029,13 +1025,13 @@ larger number of sample.
 %    \end{minipage}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesNEW.pdf}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
         \caption{Cummulative error for cases}
         \label{fig:place-top10-cases}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_DeathNEW.pdf}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Death.pdf}
         \caption{Cumulatice error for deaths.}
         \label{fig:place-top10-death}
     \end{subfigure}

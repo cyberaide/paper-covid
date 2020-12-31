@@ -13,6 +13,10 @@ $(FILENAME).pdf: $(FILENAME).tex
 .PRECIOUS: %.pdf
 .PHONY: watch clean
 
+all:
+	make clean
+	make watch
+
 
 watch: PREVIEW_CONTINUOUSLY=-pvc
 watch: $(FILENAME).pdf
