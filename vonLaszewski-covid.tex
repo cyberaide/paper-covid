@@ -1023,20 +1023,20 @@ larger number of sample.
 %        \caption{Top 5 predictions from all deaths  over all risk factors.}
 %        \label{fig:place-top5-death}
 %    \end{minipage}
-    \begin{subfigure}{.45\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
-        \caption{Cummulative error for cases}
-        \label{fig:place-top10-cases}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.95\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Death.pdf}
         \caption{Cumulatice error for deaths.}
         \label{fig:place-top10-death}
     \end{subfigure}
+    \begin{subfigure}{.95\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
+        \caption{Cummulative error for cases}
+        \label{fig:place-top10-cases}
+    \end{subfigure}
 
-    \caption{Top 10 predictions from all differnt risk factors sorted by cummulative error for cases and deaths.}
+    \caption{Top 10 predictions from all differnt risk factors sorted by cummulative error for deaths (\ref{fig:place-top10-death}) and cases (\ref{fig:place-top10-cases}). The horizontal line in each figure represents the model cummulative error with no risk factor as input for deaths and cases respectively.}
     \label{fig:place-top10}
     
     
