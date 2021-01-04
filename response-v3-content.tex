@@ -94,12 +94,12 @@ additional editorial suggestions:
   in the abstract. We also defined COVID-10 in the abstract.}
 
 \REVIEW{DONE}{Acronyms need to be defined at their first occurrences
-  (e.g., AI in the intro). An acronyme table is included in table 1,
+  (e.g., AI in the intro). A table of acronyms is included in table 1,
   we added the following acronyms to the paper}
   {All acronyms have been defined at their first usage. In addition
     we have added a section Acronyms in which all acronyms are listed
     to make it easier for the reader to look them up in case they are
-    used later on in the paper. All riskfactors have been capitalized.
+    used later on in the paper. All risk factors have been capitalized.
     The duplicated Risk factors were removed.
   }
   
@@ -122,11 +122,11 @@ additional editorial suggestions:
   { Table 2 has been reformatted. It was previously fit in the column
     with resize box. While rotating the headers the font is
     increased. The table still fits in the column as it still uses
-    resizebox.}
+    resizebox.Thus it will fit in the print.}
 
 \REVIEW{DONE}{Table 3: tidy the headers.}
   { The headers have been cleaned up and linebreaks were introduced so
-    the resizebox of the table presents the table now larger} 
+    the resizebox of the table presents the table now larger.} 
 
 \REVIEW{DONE}{Figure 5-6: can be combined to one figure with two
   panels (using ggplot2 and save the space of the labels of the
@@ -144,13 +144,12 @@ additional editorial suggestions:
 
 \todo{the lines are missing in the images showing the NONE line}
 
-First we decided to only disaly the top 10 results of each prediction
+First we decided to only display the top 10 results of each prediction
 with a factor. Second we have included the combined picture of it for
-deth and cases in the {\bf Figure Combined}. We can include this
-figure in the paper if the editor thinks this figure is better or
-sufficient. At this tiem we still have included them in a subfigure
+deaths and cases in the {\bf Figure Combined}. We can include this
+figure in the paper if the editor thinks this figure is acceptable. Presently, we have still included these in  subfigure
 (a) and (b) in the paper as the scales on the y axis are
-different. Please let us know what you think and we can adapt this.
+clearly distinct. Please let us know what if we need to change this.
 
 %\begin{figure}[!h]
 {
@@ -158,7 +157,7 @@ different. Please let us know what you think and we can adapt this.
         \includegraphics[width=.9\textwidth]{images/predict/PlaceTop10_CasesAndDeathNEW2.pdf}
         
         {\bf Figure Combined} Best predictions for cases over all risk factors.
-The two vertical lines represent the experiment in which no additional Risk factor is used for training. The top one for deaths and the bottom one for cases.}        
+The two horizontal lines represent the experiment in which no additional Risk factor is used for training. The top one for deaths and the bottom one for cases.}        
         %\label{fig:place-top10-joint}
 
 %\end{figure}
@@ -209,30 +208,25 @@ shape. Please see my comments.
   adjustments.''}
 
 
-\REVIEW{TODO}{Page 6, line 8, what level is “local level”?
+\REVIEW{DONE}{Page 6, line 8, what level is “local level”?
 }
-  {PYNE: todo
+  {
 
-  (a) Absract: the term local level has been removed from the abstract and
-  replaced by at their ``specific locations''.
+  (a) Abstract: the phrase ``local level'' has been removed from the abstract and replaced by ``specific locations''.
 
-  (b) Introduction: The term ``local level'' has been replaced with local which
-  according to an editor is suffiecient to refer to data that is
-  available for a locality.
+  (b) Introduction: The phrase ``at the local level'' has been replaced with ``for the corresponding county'' as a U.S.~county is a well-defined geographical unit of area.
 
-  (c) Line \linelabel{comment:level}  ``local level'' has been cahnged as follows
+  (c) In Section 4, the sentence containing \linelabel{comment:level}  ``local level'' has been modified as follows:
   
 We use data on community-specific health and behavioral risk factors
 aggregated at the county level from the large-scale longitudinal CDC
 Behavioral Risk Factor Surveillance System (BRFSS) surveys
 \citep{www-cdc-brfss} and demographic and socioeconomic data from the
-\citet{www-sensus}, i.e., both at the county and
-census tract, along with the cases and deaths data compiled by
+\citet{www-sensus} for each county, along with the cases and deaths data compiled by
 the CDC National Center for Health Statistics (NCHS)
-\citep{www-cdc-nchs} and integrate them with other data sources. These
-other data sources include
+\citep{www-cdc-nchs} and integrate them with other data sources such as the American Hospital Directory \citep{www-ahd}.
 
-\todo{Pyne}.
+
 
 }
 
@@ -243,7 +237,7 @@ other data sources include
   model performance measurements. Do the authors have an explanation
   for this?  }
 %
-{ (a) The CHD and other values in the table have been updated wether
+{ (a) The CHD and other values in the table have been updated wherever
   they are given in percent.
 
   (b) There were two different information sources that we originally
@@ -274,7 +268,7 @@ other data sources include
   the word “Samples”. Line 5 from the bottom, no need to capitalize
   for the word “Insurance”. Please be careful with your writing.
 }
-{The capitaization has been corrected. The paper has been reviewed by
+{The capitalization has been corrected. The paper has been reviewed by
   2 native English speakers. In addition 2 grammar checking programs
   were used on the entire paper. One of the reviewers serves also as
   editor in other journals.}
@@ -300,13 +294,13 @@ other data sources include
 \REVIEW{DONE}{Please adjust the location of your figures so they do not
   look pages apart from their interpretations.
 }
-  {The location have een adjusted, but LaTeX tries to optimize the
+  {The locations of the figures have been adjusted, although LaTeX tries to automatically optimize their
   placement. We have used the !h flag to force placement. If this
-  placement is still not sufficient please let us know. We also
-  removed images in order to facilitatie better placement. The
-  document is submitted in drafts mode which also could influence the
+  placement is still not appropriate, then please let us know. We have also
+  removed images in order to facilitate better placement. The
+  document is submitted in draft mode which might also influence the
   placement. We have tried the document in final mode with the LaTeX
-  style and it seems the placement is now fixed as we removed images.}
+  style and it seems that the placement is now fixed as we removed images.}
 
 
 \REVIEW{DONE}{If I am reading it correctly, Figures 9 and 11 are only
@@ -315,13 +309,12 @@ other data sources include
   figures when you could make Figures 13 and 14 bigger and explain the
   findings?
 }
-  {We have provided in an earlier comment that we now only include the
-  Top 10 instead of Top 1, and Top 5 to fulfull the desire of the
-  reviewers to have these images combined. However we still separated
-  the deaths from teh cases view to ease the readers ability to see
-  more details. HOwever we can easily replace the image with the one
-  provided earlier if the reviewers desire. This is a small change and
-  will appreciate the revieers feedback on this further.}
+  {As we noted in an earlier comment, now we only include the
+  Top 10 instead of Top 1, and Top 5, to ensure -- as per the suggestion of the
+  reviewers -- that these images are combined. However we still separated
+  the deaths from the cases in the figure to ease the readers' ability to view
+  more details. However, we can easily replace the image with the ones
+  provided earlier if required. This is a minor change and we welcome any further feedback on this from the reviewers.}
 
 
 \REVIEW{TODO}{The last paragraph of Section 5.2 suits the

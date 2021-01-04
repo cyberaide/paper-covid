@@ -95,7 +95,7 @@
 \author[2,3]{Saumyadipta Pyne}
 
 \affil[1]{Digital Science Center, Indiana University, Bloomington Indiana, USA}
-\affil[2]{Public Health Dynamics Lab, and Department of Biostatistics,
+\affil[2]{Public Health Dynamics Laboratory, and Department of Biostatistics,
   University of Pittsburgh, Pittsburgh, Pennsylvania, USA}
 \affil[3]{Health Analytics Network, Pennsylvania, USA}
 
@@ -145,8 +145,7 @@ over 2.3 million confirmed cases and 121,167 deaths
 took place, recent data shows a resurgence at an increased scale. In
 the absence of a vaccine or treatment to effectively combat the
 disease, non-pharmaceutical policy interventions such as social
-distancing and lockdowns are recommended by health experts to prevent
-further transmission. To gain insights into the possible impact of
+distancing and lockdowns are recommended by health experts to prevent further transmission. To gain insights into the possible impact of
 such measures on COVID-19 outcomes, we depend upon the ability to
 accurately forecast the spread of reported cases and confirmed deaths
 and recoveries. Naturally, the accuracy of forecasting relies on the
@@ -175,8 +174,7 @@ associations, and predict outcomes \citep{Ting2020-lw}.  In addition to
 traditional public health surveillance strategies available to most
 countries, a variety of static and dynamic data types may be
 integrated to model the scale and dynamics of this pandemic
-\citep{Pyne2015-ao}. Several organizations, including the Johns Hopkins
-University’s Center for Systems Science and Engineering, the New York
+\citep{Pyne2015-ao}. Several organizations, including the Johns Hopkins University’s Center for Systems Science and Engineering, the New York
 Times, the Atlantic’s COVID-19 tracking project, among others have
 developed real-time tracking maps for following COVID-19 cases around
 the world using data from the U.S.~Centers for Disease Control and
@@ -184,15 +182,13 @@ Prevention (CDC), WHO, and other international health
 agencies. Notably, the CDC receives forecasts from several modeling
 groups that use a wide variety of approaches ranging from SEIR
 (Susceptible-Exposed-Infectious-Recovered) to Agent-based to Bayesian
-models to understand the non-pharmaceutical policy interventions (or
-the lack thereof) to predict disease dynamics and its impact on human
+models to understand the non-pharmaceutical policy interventions (or the lack thereof) to predict disease dynamics and its impact on human
 lives \citep{www-cdc-modeling-forecast}.
 
 For precise and contextually relevant modeling of COVID-19 dynamics
 for a given population or community, we use data integration to
 combine community-specific health and behavioral risk factors,
-demographic and socioeconomic variables that are available at the
-local along with the cases and deaths data for COVID-19 while
+demographic and socioeconomic variables that are available for the corresponding county along with the cases and deaths data for COVID-19 while
 leveraging the recently developed and increasingly popular deep
 learning strategies to forecast COVID-19 dynamics using our
 model. Towards this, we develop a parallel computing platform called
@@ -526,17 +522,10 @@ the areas that are hardest hit.
 behavioral risk factors aggregated at the county level from the
 large-scale longitudinal CDC Behavioral Risk Factor Surveillance
 System (BRFSS) surveys \citep{www-cdc-brfss} and demographic and
-socioeconomic data from the U.S. Census Bureau \cite{www-sensus},
-i.e., both at the county and census tract, along with the cases and
+socioeconomic data from the U.S. Census Bureau \cite{www-sensus} for each county, along with the cases and
 deaths data compiled by the CDC National Center for Health Statistics
 (NCHS) \citep{www-cdc-nchs} and integrate them with other data
-sources. These other data sources include
-
-\todo{Pyne}.
-
-
-
-
+sources such as the American Hospital Directory \citep{www-ahd}.
 
 
 \subsection{Data Collection and Processing}
@@ -973,15 +962,15 @@ training experiments, we found the LSTM hyperparameters such as epochs
 and dropout values that work well for our experiments.
 
 We conducted one additional analysis and plotted the top 10 best
-cummulative prediction model errors for each risk factor in
+cumulative prediction model errors for each risk factor in
 Figure \label{fig:place-top10} for cases and deaths.  The horizontal
-black line shows the first occurance of no risk factor being used.
+black line shows the first occurrence of no risk factor being used.
 
 Notably, we identified that a jump occurs when we sort the top 10
 model predictions at around 330 models from a total of 3400
 automatically generated models. This also underscores the need to run
 our deep learning model multiple times to obtain best parameter
-candidates.  Furthermore, we see that the cummulative error for cases
+candidates.  Furthermore, we see that the cumulative error for cases
 is about half the size as for death. This is caused by cases having a
 larger number of sample.
 
@@ -1026,17 +1015,17 @@ larger number of sample.
     \begin{subfigure}{.95\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Death.pdf}
-        \caption{Cumulatice error for deaths.}
+        \caption{Cumulative error for deaths.}
         \label{fig:place-top10-death}
     \end{subfigure}
     \begin{subfigure}{.95\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
-        \caption{Cummulative error for cases}
+        \caption{Cumulative error for cases}
         \label{fig:place-top10-cases}
     \end{subfigure}
 
-    \caption{Top 10 predictions from all differnt risk factors sorted by cummulative error for deaths (\ref{fig:place-top10-death}) and cases (\ref{fig:place-top10-cases}). The horizontal line in each figure represents the model cummulative error with no risk factor as input for deaths and cases respectively.}
+    \caption{Top 10 predictions from all different risk factors sorted by cumulative error for deaths (\ref{fig:place-top10-death}) and cases (\ref{fig:place-top10-cases}). The horizontal line in each figure represents the model cumulative error with no risk factor as input for deaths and cases respectively.}
     \label{fig:place-top10}
     
     
