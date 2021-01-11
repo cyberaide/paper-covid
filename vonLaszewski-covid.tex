@@ -517,8 +517,10 @@ disease must be as comprehensive and integrative as possible.  The
 regular reporting of accurate Coronavirus outbreaks data from local
 health departments has been understandably difficult, especially in
 the areas that are hardest hit.
-%
-\linelabel{comment:level} We use data on community-specific health and
+
+%\linelabel{comment:level} 
+
+We use data on community-specific health and
 behavioral risk factors aggregated at the county level from the
 large-scale longitudinal CDC Behavioral Risk Factor Surveillance
 System (BRFSS) surveys \citep{www-cdc-brfss} and demographic and
@@ -938,7 +940,7 @@ that show the respective errors.
     \caption{Model prediction error for cumulative deaths when
       including one risk factor POP\_DENSITY\_2010
       in addition to the past number of cases and deaths.}
-    \label{fig:error-death-popdensity}
+    \label{fig:error-death-popdensity-both}
   
     
 \end{figure}
@@ -979,7 +981,7 @@ larger number of sample.
 
 
 
-\begin{figure}[!h]
+\begin{figure}[!htbp]
 %    \begin{minipage}{.45\textwidth}
 %        \centering
 %        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop1_Cases.pdf}
@@ -1026,7 +1028,7 @@ larger number of sample.
     \end{subfigure}
 
     \caption{Top 10 predictions from all different risk factors sorted by cumulative error for deaths (\ref{fig:place-top10-death}) and cases (\ref{fig:place-top10-cases}). The horizontal line in each figure represents the model cumulative error with no risk factor as input for deaths and cases respectively.}
-    \label{fig:place-top10}
+    \label{fig:place-top10-both}
     
     
 \end{figure}
