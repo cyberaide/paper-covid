@@ -7,7 +7,7 @@
 \usepackage{setspace}
 \usepackage{lineno}
 \linenumbers
-\doublespace
+%\doublespace
 % above needs to be commented out for production
 
 
@@ -600,9 +600,9 @@ The list of covariates is presented in Table \ref{tab:risk-factors}.
 \toprule
 Risk Factor & Description \\
 \midrule
- NONE & No risk factor used\\
  ARTHRITIS 	  & Percent reported with arthritis \\
  BINGE 		  & Percent reported with binge drinking \\
+ BLACK	  & Percent of Blacks in the population\\
  BPHIGH 	  & Percent reported with  high blood pressure\\
  BPMED 		  & Percent reported taking blood pressure medication\\
  CANCER 	  & Percent reported as cancer patients\\
@@ -615,6 +615,7 @@ Risk Factor & Description \\
  DIABETES 	  & Percent reported with diabetes\\
  ESTBEDS 	  & Number of estimated beds in hospitals\\
  HIGHCHOL 	  & Percent reported with high cholesterol\\
+ HISPANIC	  & Percent of Hispanic in the population\\
  INSURANCE 	  & Percent reported with insurance\\
  KIDNEY 	  & Percent reported with kidney disease\\
  LPA 		  & Percent reported with no leisure-time physical activity \\
@@ -622,13 +623,14 @@ Risk Factor & Description \\
  NBEDS 		  & Number of beds in hospitals \\
  NBEDS/1000   & Number of beds per 1000 people\\
  NHOSP 		  & Number of hospitals\\
+ NONE & No risk factor used\\
  OBESITY 	  & Percent reported with  population that is obese\\
  PHLTH        & Percent reported with physical health issues\\
- PVI 		  & Pandemic vulnerability index \\
- STROKE 	  & Percent reported with stroke\\
- BLACK	  & Percent of Blacks in the population\\
+ POP\_DENSITY\_2010 & Population Density from the 2010 Census\\
  POVERTY & Percent of poverty in the population\\
+ % PVI 		  & Pandemic vulnerability index \\
  SENIOR  & Percent of seniors in the population\\
+ STROKE 	  & Percent reported with stroke\\
  SVI\_MINORITY 	  & Percent of social vulnerability index in the minority population\\
  SVI\_OVERALL 	  & Percent of social vulnerability index in the overall population\\
 \bottomrule
@@ -700,13 +702,13 @@ that are smaller than 1\% from the model predictions.
     \begin{subfigure}{.49\textwidth}
       \centering
       \includegraphics[width=1.0\linewidth]{images/predict/Fig4a.pdf}  
-      \caption{Prediction acuracy for deaths.}
+      \caption{Prediction accuracy for deaths.}
       \label{fig:magic-a}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
       \centering
       \includegraphics[width=1.0\linewidth]{images/predict/Fig4b.pdf}        
-      \caption{Prediction acuracy for cases.}
+      \caption{Prediction accuracy for cases.}
       \label{fig:magic-b}
     \end{subfigure}
 
@@ -819,7 +821,7 @@ deaths.
     \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_deathNEW2.pdf}
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
-      prediction of COVID-19 death. The y-axis represents the
+      prediction of COVID-19 deaths. The y-axis represents the
       cumulative error over all input data for the cities.}
     \label{fig:box-death}
 \end{figure}
@@ -832,19 +834,20 @@ follows:
 
 \begin{description}
 
-\item[Order for cases sorted by minimum model error:] NONE,
-  POP\_DENSITY\_2010, PHLTH, INSURANCE, BLACK,
-  HISPANICS, NHOSP, CHOLSCREEN, DIABETES, STROKE,
-  CHD, CHECKUP, NBEDS, SVI\_OVERALL, KIDNEY, CASTHMA, BPMED,
-  LPA, CSMOKING, ARTHRITIS, POVERTY, ESTBEDS, MHLTH, SENIOR, COPD,
-  CANCER, NBEDS/1000, BPHIGH, HIGHCHOL, BINGE, OBESITY, SVI\_MINORITY
+\item[Order for cases sorted by minimum model error:] 
+  POP\_DENSITY\_2010, PHLTH, BLACK, HISPANIC, NHOSP, INSURANCE, 
+  CHOLSCREEN, DIABETES, STROKE, CHD, CHECKUP, NBEDS, SVI\_OVERALL, 
+  KIDNEY, CASTHMA, BPMED, LPA, CSMOKING, ARTHRITIS, POVERTY, ESTBEDS, 
+  MHLTH, COPD, SENIOR, CANCER, NBEDS/1000, BPHIGH, NONE, HIGHCHOL, 
+  BINGE, OBESITY, SVI\_MINORITY
 
-\item[Order for deaths sorted by minimum model error:] NONE,
-  SVI\_OVERALL, CSMOKING, HISPANICS, POP\_DENSITY\_2010,
-  SENIOR, CHOLSCREEN, CASTHMA, INSURANCE, MHLTH, LPA,
-  POVERTY, OBESITY, CANCER, BLACK, NBEDS/1000, DIABETES, ARTHRITIS,
-  NBEDS, NHOSP, BPHIGH, CHECKUP, PHLTH, CHD, STROKE, HIGHCHOL,
+\item[Order for deaths sorted by minimum model error:] 
+  SVI\_OVERALL, CSMOKING, HISPANIC, NONE, POP\_DENSITY\_2010, 
+  SENIOR, CHOLSCREEN, CASTHMA, INSURANCE, MHLTH, LPA, 
+  POVERTY, OBESITY, CANCER, NBEDS/1000, BLACK, DIABETES, ARTHRITIS, 
+  NBEDS, NHOSP, BPHIGH, PHLTH, CHECKUP, CHD, STROKE, HIGHCHOL, 
   ESTBEDS, KIDNEY, BINGE, BPMED, COPD, SVI\_MINORITY
+
 \end{description}
 
 We show the errors and the association with a risk factors in Table
@@ -968,13 +971,14 @@ many of these factors perform better on average.
 \end{table}
 
 We observed a different scenario for deaths, in which we only
-identified two risk factors, namely the Social Vulnerability Index
-(SVI) and chain-smoking, that, when integrated into our deep learning
+identified three risk factors, namely the Social Vulnerability Index
+(SVI), chain-smoking, and Hispanic that, when integrated into our deep learning
 model, leads to better prediction results. However, the accuracy of
 the overall prediction of deaths is far less precise than that of the
-cases. To showcase this, we have included Figures
+cases. 
+To showcase this, we have included Figures
 \ref{fig:error-case-popdensity} and \ref{fig:error-death-popdensity}
-that show the respective errors.
+that show the respective errors for example for the population density. 
 
 \begin{figure}[!h]
   \begin{subfigure}{.49\textwidth}
@@ -1014,7 +1018,7 @@ fluctuations without any special activities. Previously, we have
 already shown in Section \ref{sec:emperical} that for smooth data
 inputs the prediction is very accurate.  Using fluctuation data allows
 our framework for an automated ingest of data on a daily basis to
-enable data fusion of new cases and death information. Hence, we can
+enable data fusion of new cases and deaths information. Hence, we can
 re-train the model with new incoming data every day. Through repeated
 training experiments, we found the LSTM hyperparameters such as epochs
 and dropout values that work well for our experiments.
@@ -1025,11 +1029,11 @@ Figure \label{fig:place-top10} for cases and deaths.  The horizontal
 black line shows the first occurrence of no risk factor being used.
 
 Notably, we identified that a jump occurs when we sort the top 10
-model predictions at around 330 models from a total of 3400
+model predictions at around 320 models from a total of 3200
 automatically generated models. This also underscores the need to run
 our deep learning model multiple times to obtain best parameter
 candidates.  Furthermore, we see that the cumulative error for cases
-is about half the size as for death. This is caused by cases having a
+is about half the size as for deaths. This is caused by cases having a
 larger number of samples than those from deaths.
 
 % In case of cases we also see a drop in the better
@@ -1079,7 +1083,7 @@ larger number of samples than those from deaths.
     \begin{subfigure}{.95\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesNEW3.pdf}
-        \caption{Cumulative error for cases}
+        \caption{Cumulative error for cases.}
         \label{fig:place-top10-cases}
     \end{subfigure}
 
@@ -1325,7 +1329,7 @@ pandemics from anywhere in the world.
 The comprehensive analysis showcases the feasibility of our
 approach. Based on the outcomes reported it can lead to an improved
 prediction once we integrate risk factors in addition to the
-time-dependent data such as cases and death resulting from
+time-dependent data such as cases and deaths resulting from
 COVID-19. While the improvements observed were modest, they do present
 a concrete way of improving the forecast models. Inclusion of further
 putative factors from the ongoing worldwide studies on Covid-19 will
