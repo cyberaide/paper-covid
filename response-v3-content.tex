@@ -15,10 +15,13 @@
   \end{quote}
 }
 
-REVISION DUE: 01.12.2021
+
+\bigskip
 
 \begin{itemize}
 \item Manuscript ID JDS2007-001 to Journal of Data Science.
+
+\item REVISION DUE: 01.12.2021
 
 \item \url{http://jds.ruc.edu.cn/EN/column/item8.shtml}
 
@@ -37,19 +40,9 @@ REVISION DUE: 01.12.2021
 If possible we would like to acknowledge the reviewers by name in the
 acknowledgement section, but this depends on them and you.
 
+We include the following comments
 
-
-``AICov: A Deep Learning Framework for COVID-19 Forecastingwith
-CovariatesAICov: An Integrative Deep Learning Framework for
-COVID-19Forecasting with Covariates''
-
-Manuscript ID JDS2007-001 to Journal of Data Science.
-
-Progress: \url{https://www.e-publications.org/ruc/sbs/JDS/} 
-
-
-
-\section{Additional actions taken}
+\section*{Additional actions taken}
 
 
 \REVIEW{DONE}{Using the JDS template} {We used the new JDS \LaTeX
@@ -70,7 +63,7 @@ additional editorial suggestions:
 
 \bigskip
 
-  \REVIEW{PROGRESS} {Submit the point-by-point response to the
+  \REVIEW{DONE}{Submit the point-by-point response to the
     reviewer's comments and my comments in a pdf file.}{The original
     submisison web page had a field to enter the comments as text
     which we used. We just added ``see attached PDF'' to make it
@@ -85,7 +78,7 @@ additional editorial suggestions:
   \REVIEW{DONE} {Do not italicize in the text.}
   {All italicized text
     have been removed.  Formulas enclosed in dollar signs are in
-    italized text as is default for the JDS document style.}
+    italicized text as is default for the JDS document style.}
 
 
   \REVIEW{DONE} {AICov needs to be defined in the abstract.}
@@ -104,12 +97,12 @@ additional editorial suggestions:
   }
   
 
-\REVIEW{TODO}{Figure 2: please present the equations as equations. The
+\REVIEW{DONE}{Figure 2: please present the equations as equations. The
   notations used in the equation need a full check (e.g., h is used as
   both the dimension and vector). I'd like to see a clear distinction
   between inputs/outputs and parameters. I'd suggest that the inputs
   be set up before the equations are presented.}
-  { todo}
+  { We have replaced the h with a capital H, We have started our explanation of the equations with the input and output vectors, we have removed the equations from the image and displayed them as separate equations using the LaTeX equation environment with numbers. }
 
 
 \REVIEW{DONE}{Regenerate the figures into pdf format (the current
@@ -122,7 +115,7 @@ additional editorial suggestions:
   { Table 2 has been reformatted. It was previously fit in the column
     with resize box. While rotating the headers the font is
     increased. The table still fits in the column as it still uses
-    resizebox.Thus it will fit in the print.}
+    resizebox. Thus it will fit in the print.}
 
 \REVIEW{DONE}{Table 3: tidy the headers.}
   { The headers have been cleaned up and linebreaks were introduced so
@@ -139,10 +132,10 @@ additional editorial suggestions:
     {The figures were combined as subfigures into Figure \ref{fig:error-death-popdensity} (a) and (b)}
 
 
-\REVIEW{PROGRESS}{Figure 9-14: combine into one figure.}
+\REVIEW{DONE}{Figure 9-14: combine into one figure.}
   {
 
-\todo{the lines are missing in the images showing the NONE line}
+% \todo{the lines are missing in the images showing the NONE line}
 
 First we decided to only display the top 10 results of each prediction
 with a factor. Second we have included the combined picture of it for
@@ -230,7 +223,7 @@ the CDC National Center for Health Statistics (NCHS)
 
 }
 
-\REVIEW{PROGRESS}{ Page 7, Table 1, is “CHD” also a percent? If yes
+\REVIEW{DONE}{ Page 7, Table 1, is “CHD” also a percent? If yes
   please modify the description; Percent- blacks and black percent
   both correspond to “Percent of blacks in the population”. Both seem
   to have been used according to Table 3, with difference in the four
@@ -246,8 +239,7 @@ the CDC National Center for Health Statistics (NCHS)
   corrected information for these duplicates, while only presenting
   the one that is more accurate.
 
-  (c) \todo{TODO. fix the values and only have one population value}
-
+  (c) We have fixed all values. Furthermore we have split the table with the values in two tables fro deaths and for cases to relate them more easily for the reader to the box diagrams. This makes the display of the data consistent and the tables and figures match. 
 }
 
 
@@ -258,14 +250,14 @@ the CDC National Center for Health Statistics (NCHS)
   at the end to make it easier for the reader to look them up.}
 
 
-\REVIEW{TODO}{What do the two panels in Figure 4 represent? Please give
+\REVIEW{DONE}{What do the two panels in Figure 4 represent? Please give
   clearer description either in the text or figure caption.
 }
-  { todo}
+  { Better descriptions have been added. }
 
 
 \REVIEW{DONE}{Section 5.2, paragraph 2 line 6, no need to capitalize for
-  the word “Samples”. Line 5 from the bottom, no need to capitalize
+  the word ``Samples''. Line 5 from the bottom, no need to capitalize
   for the word “Insurance”. Please be careful with your writing.
 }
 {The capitalization has been corrected. The paper has been reviewed by
@@ -274,21 +266,21 @@ the CDC National Center for Health Statistics (NCHS)
   editor in other journals.}
 
 
-\REVIEW{TODO}{Section 5.2, the “order for cases sorted by minimum model
-  order” and “order for deaths sorted by minimum model error”
+\REVIEW{DONE}{Section 5.2, the ``order for cases sorted by minimum model
+  order'' and ``order for deaths sorted by minimum model error''
   paragraphs are redundant, as the same information is already
   displayed in the x-legend for Figures 5 and 6.
 }
-  { todo}
+  { The figures have been redone as subfigures based on Reviewer ones comment. }
 
 
-\REVIEW{TODO}{In Table 3, what is the unit for the error terms? The
+\REVIEW{DONE}{In Table 3, what is the unit for the error terms? The
   errors in Figures 7 and 8 are percentages. If errors in Table 3 are
   also percentages please clearly mark. Also, the numbers in Figures 7
   and 8 do not align with numbers in row 1 of Table 3. Please check
   your numbers with care.
 }
-  { todo}
+  {The table has been corrected. See details Reviewer 1}
 
 
 \REVIEW{DONE}{Please adjust the location of your figures so they do not
@@ -296,7 +288,8 @@ the CDC National Center for Health Statistics (NCHS)
 }
   {The locations of the figures have been adjusted, although LaTeX tries to automatically optimize their
   placement. We have used the !h flag to force placement. If this
-  placement is still not appropriate, then please let us know. We have also
+  placement is still not appropriate, then please let us know. 
+   We have also
   removed images in order to facilitate better placement. The
   document is submitted in draft mode which might also influence the
   placement. We have tried the document in final mode with the LaTeX
@@ -317,29 +310,29 @@ the CDC National Center for Health Statistics (NCHS)
   provided earlier if required. This is a minor change and we welcome any further feedback on this from the reviewers.}
 
 
-\REVIEW{TODO}{The last paragraph of Section 5.2 suits the
+\REVIEW{DONE}{The last paragraph of Section 5.2 suits the
   conclusion/discussion for future work section, not in the middle of
   a paper.
 }
-  { todo}
+  { This paragraph has been moved to the conclusion.}
 
 
-\REVIEW{TODO}{Section 5.3, the authors mentioned two way of constructing
+\REVIEW{DONE}{Section 5.3, the authors mentioned two way of constructing
   covariates. Since the second way was more complicated while yielding
   no better performance the authors did not use it. Then it can be
   removed without damaging the storyline.
 }
-  { todo}
+  { Based on the reviewers suggestion we removed section 5.3 so we could focus on the previous data analysis only. }
 
 
-\REVIEW{TODO}{The description “We renormalized, so the two basic
+\REVIEW{DONE}{The description “We renormalized, so the two basic
   features (following day) contributed 50\% of the loss function” is
   hard to interpret. Please elaborate.
 }
-  { todo}
+    { Based on the reviewers suggestion we removed section 5.3 so we could focus on the previous data analysis only. }
 
 
-\REVIEW{TODO}{Paragraph 2 on page 14, “Selu, Relu and Tanh activations
+\REVIEW{DONE}{Paragraph 2 on page 14, “Selu, Relu and Tanh activations
   gave very similar results while Sigmoid activation was much
   worse. However we still use a Sigmoid function...” is very
   counter-intuitive. Isn’t the point of trying different activation
@@ -349,10 +342,10 @@ the CDC National Center for Health Statistics (NCHS)
   sentence does not read correct. Please check your sentences with
   care!
 }
-  { todo}
+  { Based on the reviewers suggestion we removed section 5.3 so we could focus on the previous data analysis only. }
 
 
-\REVIEW{TODO}{How to interpret the “significant positive correlation” in
+\REVIEW{DONE}{How to interpret the “significant positive correlation” in
   Section 6 from the practical perspective? Also, the term
   “evolution function” made its first appearance in Section 6 without
   any definition or explanation; I suggest either removing the whole
@@ -360,7 +353,7 @@ the CDC National Center for Health Statistics (NCHS)
   function.  18. The first two paragraphs do not read like to be in a
   “Conclusion” section. Rather, they better fit into the introduction.
 }
-  { todo}
+  { Based on the suggestion of the reviewer we deleted Section 6}
 
 
 \clearpage

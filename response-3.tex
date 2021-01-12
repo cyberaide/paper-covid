@@ -1,15 +1,7 @@
-%\documentclass[letterpaper, inpress]{jds} % use this for production
-\documentclass[a4paper, inpress]{jds} % use this for production
+\documentclass[letterpaper, inpress]{jds} % use this for production
 %\documentclass[a4paper, review]{jds}      % use this for review
-
-% spacing
-% outcomment this for production
-\usepackage{setspace}
 \usepackage{lineno}
 \linenumbers
-\doublespace
-% above needs to be commented out for production
-
 
 \usepackage{subcaption}
 \usepackage{calc}
@@ -112,7 +104,12 @@
 
 \begin{document}
 
+
+\input{response-v3-content}
+
 \maketitle
+
+\input{response-v3-content}
 
 \begin{abstract}
   \ABSTRACT
@@ -1072,13 +1069,13 @@ larger number of samples than those from deaths.
 %    \end{minipage}
     \begin{subfigure}{.95\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_DeathNEW3.pdf}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Death.pdf}
         \caption{Cumulative error for deaths.}
         \label{fig:place-top10-death}
     \end{subfigure}
     \begin{subfigure}{.95\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesNEW3.pdf}
+        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_Cases.pdf}
         \caption{Cumulative error for cases}
         \label{fig:place-top10-cases}
     \end{subfigure}
@@ -1460,15 +1457,6 @@ not repeated here.
 
 \bibliographystyle{jdsurl}
 \bibliography{bib/data-covid19,bib/lstm,bib/cloudmesh}
-
-\clearpage
-
-\singlespace
-
-\maketitle
-
-\input{response-v3-content}
-
 
 
 \end{document}
