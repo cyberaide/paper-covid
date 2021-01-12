@@ -270,7 +270,7 @@ how the output gate influences the output activation of the LSTM
 unit. A cell has a number of inputs and outputs that are
 weighted. During a training step, these weights are learned to be
 reused in a prediction process between input and output sequences.
-The LSTM network will have a number of input values represented as  vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.
+The LSTM network will have a number of input values represented as vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.
 
 \newcommand{\RH}{\mathbb{R}^{H}}
 \newcommand{\RD}{\mathbb{R}^{D}}
