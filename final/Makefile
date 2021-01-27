@@ -3,7 +3,7 @@ DIR=.
 
 # .PHONY: $(FILENAME).pdf
 
-all: $(FILENAME).pdf
+
 
 # MAIN LATEXMK RULE
 
@@ -17,9 +17,12 @@ all:
 	make clean
 	make watch
 
+paper: $(FILENAME).pdf
 
 watch: PREVIEW_CONTINUOUSLY=-pvc
 watch: $(FILENAME).pdf
+
+
 
 clean:
 	latexmk -C -bibtex
