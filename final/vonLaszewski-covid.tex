@@ -137,7 +137,8 @@ over 2.3 million confirmed cases and 121,167 deaths
 took place, recent data shows a resurgence at an increased scale. In
 the absence of a vaccine or treatment to effectively combat the
 disease, non-pharmaceutical policy interventions such as social
-distancing and lockdowns are recommended by health experts to prevent further transmission. To gain insights into the possible impact of
+distancing and lockdowns are recommended by health experts to prevent
+further transmission. To gain insights into the possible impact of
 such measures on COVID-19 outcomes, we depend upon the ability to
 accurately forecast the spread of reported cases and confirmed deaths
 and recoveries. Naturally, the accuracy of forecasting relies on the
@@ -162,26 +163,29 @@ Unlike earlier global outbreaks, during COVID-19, the current
 worldwide digital ecosystem allows for real-time data collection,
 which in turn is used by artificial intelligence (AI) and deep
 learning systems to understand healthcare trends, model risk
-associations, and predict outcomes \citep{Ting2020-lw}.  In addition to
-traditional public health surveillance strategies available to most
+associations, and predict outcomes \citep{Ting2020-lw}.  In addition
+to traditional public health surveillance strategies available to most
 countries, a variety of static and dynamic data types may be
 integrated to model the scale and dynamics of this pandemic
-\citep{Pyne2015-ao}. Several organizations, including the Johns Hopkins University’s Center for Systems Science and Engineering, the New York
-Times, the Atlantic’s COVID-19 tracking project, among others have
-developed real-time tracking maps for following COVID-19 cases around
-the world using data from the U.S.~Centers for Disease Control and
-Prevention (CDC), WHO, and other international health
+\citep{Pyne2015-ao}. Several organizations, including the Johns
+Hopkins University’s Center for Systems Science and Engineering, the
+New York Times, the Atlantic’s COVID-19 tracking project, among others
+have developed real-time tracking maps for following COVID-19 cases
+around the world using data from the U.S.~Centers for Disease Control
+and Prevention (CDC), WHO, and other international health
 agencies. Notably, the CDC receives forecasts from several modeling
 groups that use a wide variety of approaches ranging from SEIR
 (Susceptible-Exposed-Infectious-Recovered) to Agent-based to Bayesian
-models to understand the non-pharmaceutical policy interventions (or the lack thereof) to predict disease dynamics and its impact on human
+models to understand the non-pharmaceutical policy interventions (or
+the lack thereof) to predict disease dynamics and its impact on human
 lives \citep{www-cdc-modeling-forecast}.
 
 For precise and contextually relevant modeling of COVID-19 dynamics
 for a given population or community, we use data integration to
 combine community-specific health and behavioral risk factors,
-demographic and socioeconomic variables that are available for the corresponding county along with the cases and deaths data for COVID-19 while
-leveraging the recently developed and increasingly popular deep
+demographic and socioeconomic variables that are available for the
+corresponding county along with the cases and deaths data for COVID-19
+while leveraging the recently developed and increasingly popular deep
 learning strategies to forecast COVID-19 dynamics using our
 model. Towards this, we develop a parallel computing platform called
 AICov standing for AI-driven Platform for COVID-19 to implement the
@@ -227,9 +231,9 @@ algorithms used in this work.
 \label{sec:lstm-background}
 % ------------------------------
 
-In this study, we base our work on a traditional LSTM algorithm for our predictions
-\citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a Recurrent
-Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
+In this study, we base our work on a traditional LSTM algorithm for
+our predictions \citep{www-keras-lstm,Hochreiter1997-dk}. An LSTM is a
+Recurrent Neural Network (RNN) \citep{Rumelhart1986-li} with feedback
 connections allowing the use of data input sequences to predict data
 output sequences. LSTMs have been applied to many application areas
 from handwriting \citep{Graves2009-qb}, image, feature detection, and
@@ -260,14 +264,26 @@ how the output gate influences the output activation of the LSTM
 unit. A cell has a number of inputs and outputs that are
 weighted. During a training step, these weights are learned to be
 reused in a prediction process between input and output sequences.
-The LSTM network will have a number of input values represented as vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.  We use in the equations $\circ$ as the Hadamard product,
+The LSTM network will have a number of input values represented as
+vector x and a number of output values in the last layer of the
+network predicting a number of future values
+\citep{lstm-explained}. For our experiments this includes the numbers
+of days we use as input to our prediction and the number of days we
+use as output of our prediction for a single cell. In our
+implementation the number for inputs and outputs can be adjusted. We
+repeat this prediction over all input sequences to create the output
+forecast sequences. Next we list the equations (\ref{eq:first}) -
+(\ref{eq:last}) used in LSTM.  We use in the equations $\circ$ as the
+Hadamard product,
 $\sigma_g$ is the sigmoid function for the gate.
 With 
 $D$ being the number of days as input features and
 $H$ being the number of hidden layers, the 
 inputs and outputs are defined by  
-$x_{t} \in \RD$ the input vector to the LSTM unit and 
-$h_{t} \in \RH$ the hidden state vector e.g., the last of which is the output vector of the LSTM. In our case the output contains the days we predict based on the input features. The equations are 
+$x_{t} \in \RD$ the input vector to the LSTM unit and
+$h_{t} \in \RH$ the hidden state vector e.g., the last of which is the
+output vector of the LSTM. In our case the output contains the days we
+predict based on the input features. The equations are
 
 \begin{align}
     f_t &= \sigma_g(W_f x_t + U_f h_{t-1} + b_f), \label{eq:first} \\
@@ -284,12 +300,15 @@ $i_t \in \RH$ is the input/update gates activation vector,
 $o_{t}\in \RH$ output gate's activation vector, 
 $\tilde{c}_{t}\in \RH$ the cell input activation vector
 $c_{t}\in \RH$ the cell state vector,  
-$\sigma_c$ is the cell activation function, 
-$W\in \mathbb {R} ^{H\times D}$, $U\in \mathbb {R} ^{H\times H}$ and $b\in \RH$ being the weight matrices and bias vector parameters which are learned during training.
-In particular we denote $W_{q}$ and $U_{q}$ contain the weights of the
-input and recurrent connections, where the subscript denotes either
-the input gate $i$, the output gate $o$, the forget gate $f$ or the
-memory cell $c$. For a more detailed discussion about LSTM's we refer to \cite{lstm-explained}. 
+$\sigma_c$ is the cell activation function,
+$W\in \mathbb {R} ^{H\times D}$,
+$U\in \mathbb {R} ^{H\times H}$ and
+$b\in \RH$ being the weight matrices and bias vector parameters which
+are learned during training.  In particular we denote $W_{q}$ and
+$U_{q}$ contain the weights of the input and recurrent connections,
+where the subscript denotes either the input gate $i$, the output gate
+$o$, the forget gate $f$ or the memory cell $c$. For a more detailed
+discussion about LSTM's we refer to \cite{lstm-explained}.
 
 
 
@@ -304,19 +323,18 @@ California earthquakes, traffic flow, security events can be described
 by deep learning operators that both capture the dynamics and allow
 predictions. 
 
-In this paper, we adopt this approach to describe the
-time dependence of COVID-19 infection and fatality counts in different
-regions. 
-We intend to
-process the two time-series (infections, fatalities/deaths) associated with
-each city plus the covariates (fixed in time but dependent on region)
-to build a model for the time evolution of the data. There is a
-nontrivial architecture design choice as to the method of handling the
-time-independent covariates. We could combine a recurrent network for
-the time series with some fixed network for the covariates. However,
-that does not fit with our concept of deriving an evolution operator
-for COVID-19 data that naturally depends on the covariates for each
-city. Thus instead, we feed the covariates into the recurrent network as input in addition to the days.
+In this paper, we adopt this approach to describe the time dependence
+of COVID-19 infection and fatality counts in different regions.  We
+intend to process the two time-series (infections, fatalities/deaths)
+associated with each city plus the covariates (fixed in time but
+dependent on region) to build a model for the time evolution of the
+data. There is a nontrivial architecture design choice as to the
+method of handling the time-independent covariates. We could combine a
+recurrent network for the time series with some fixed network for the
+covariates. However, that does not fit with our concept of deriving an
+evolution operator for COVID-19 data that naturally depends on the
+covariates for each city. Thus instead, we feed the covariates into
+the recurrent network as input in addition to the days.
 
 \section{AICov Architecture}
 \label{sec:arch}
@@ -499,14 +517,14 @@ regular reporting of accurate Coronavirus outbreaks data from local
 health departments has been understandably difficult, especially in
 the areas that are hardest hit.
 
-We use data on community-specific health and
-behavioral risk factors aggregated at the county level from the
-large-scale longitudinal CDC Behavioral Risk Factor Surveillance
-System (BRFSS) surveys \citep{www-cdc-brfss} and demographic and
-socioeconomic data from the U.S. Census Bureau \cite{www-sensus} for each county, along with the cases and
-deaths data compiled by the CDC National Center for Health Statistics
-(NCHS) \citep{www-cdc-nchs} and integrate them with other data
-sources such as the American Hospital Directory \citep{www-ahd}.
+We use data on community-specific health and behavioral risk factors
+aggregated at the county level from the large-scale longitudinal CDC
+Behavioral Risk Factor Surveillance System (BRFSS) surveys
+\citep{www-cdc-brfss} and demographic and socioeconomic data from the
+U.S. Census Bureau \cite{www-sensus} for each county, along with the
+cases and deaths data compiled by the CDC National Center for Health
+Statistics (NCHS) \citep{www-cdc-nchs} and integrate them with other
+data sources such as the American Hospital Directory \citep{www-ahd}.
 
 
 \subsection{Data Collection and Processing}
@@ -627,21 +645,30 @@ Risk Factor & Description \\
 
 \section{Analysis}
 
-We have conducted a number of analysis efforts to evaluate the validity of our approach. We focus on the following questions:
+We have conducted a number of analysis efforts to evaluate the
+validity of our approach. We focus on the following questions:
 
-\begin{question} \normalfont Can we apply deep learning strategies that self-learn the behavior of a model in order to provide future predictions? See Section \ref{sec:emperical}.
+\begin{question} \normalfont Can we apply deep learning strategies
+  that self-learn the behavior of a model in order to provide future
+  predictions? See Section \ref{sec:emperical}.
 \label{q:1}
 \end{question}
 
-\begin{question} \normalfont Can we use real time data as input and apply deep learning strategies instead of models that self learn and provide future predictions? See Section \ref{sec:lstm-covariate}.
+\begin{question} \normalfont Can we use real time data as input and
+  apply deep learning strategies instead of models that self learn and
+  provide future predictions? See Section \ref{sec:lstm-covariate}.
 \label{q:2}
 \end{question}
 
-\begin{question} \normalfont Does the inclusion of covariates improve the prediction quality while including geospatial and socio-economic risk factors? See Section \ref{sec:lstm-covariate}.
+\begin{question} \normalfont Does the inclusion of covariates improve
+  the prediction quality while including geospatial and socio-economic
+  risk factors? See Section \ref{sec:lstm-covariate}.
 \label{q:3}
 \end{question}
 
-\begin{question} \normalfont Are there some impact factors that influence the prediction more than others? See Section \ref{sec:lstm-covariate}.
+\begin{question} \normalfont Are there some impact factors that
+  influence the prediction more than others? See Section
+  \ref{sec:lstm-covariate}.
 \label{q:4}
 \end{question}
 
@@ -649,30 +676,30 @@ We have conducted a number of analysis efforts to evaluate the validity of our a
 \subsection{Deep Learning Predictions of Model-based Empirical Fits} 
 \label{sec:emperical}
 
-To establish the feasibility of using LSTM, we have, in our
-analysis, verified that through deep learning we can recreate the
-predictions identified by a model-based approach using empirical
-fits. In this comprehensive analysis, we obtain predictions through
-deep learning while using data generated from epidemiological models
-as discussed in \citep{marsland20-covid-paper}. The time series we used
-was 100 days long, and a multi-layered LSTM
-recurrent network was used. Our prediction approach differs by
-learning not only from the demographics (fixed data for each city) and
-time-dependent data but by integrating the population model for the
-underlying prediction, as shown in Figure \ref{fig:magic-1}. Such model
-predictive integration capability is important in any application with
-multiple time scales. For example, this allows us to integrate
-multi-scale time effects into the forecast, which could address the
-combination of general forecasts and the next time steps of choice,
-such as days, weeks, months, or longer. For this analysis, we used 37
-of the 110 cities with reliable empirical fits (that we derived from
-an epidemiological model and not deep learning
-\citep{marsland20-covid-paper}) for the cases and deaths data up to
-April 15, 2020. Our analysis identified a sophisticated single deep
-learning time evolution operator that can describe these 37 separate
-data sets, and smooth fitted data leads to very accurate deep learning
-descriptions via LSTM as depicted in Figure \ref{fig:magic-1}
-that are smaller than 1\% from the model predictions. 
+To establish the feasibility of using LSTM, we have, in our analysis,
+verified that through deep learning we can recreate the predictions
+identified by a model-based approach using empirical fits. In this
+comprehensive analysis, we obtain predictions through deep learning
+while using data generated from epidemiological models as discussed in
+\citep{marsland20-covid-paper}. The time series we used was 100 days
+long, and a multi-layered LSTM recurrent network was used. Our
+prediction approach differs by learning not only from the demographics
+(fixed data for each city) and time-dependent data but by integrating
+the population model for the underlying prediction, as shown in Figure
+\ref{fig:magic-1}. Such model predictive integration capability is
+important in any application with multiple time scales. For example,
+this allows us to integrate multi-scale time effects into the
+forecast, which could address the combination of general forecasts and
+the next time steps of choice, such as days, weeks, months, or
+longer. For this analysis, we used 37 of the 110 cities with reliable
+empirical fits (that we derived from an epidemiological model and not
+deep learning \citep{marsland20-covid-paper}) for the cases and deaths
+data up to April 15, 2020. Our analysis identified a sophisticated
+single deep learning time evolution operator that can describe these
+37 separate data sets, and smooth fitted data leads to very accurate
+deep learning descriptions via LSTM as depicted in Figure
+\ref{fig:magic-1} that are smaller than 1\% from the model
+predictions.
 
 
 \begin{figure}[!h]
@@ -680,13 +707,13 @@ that are smaller than 1\% from the model predictions.
 
     \begin{subfigure}{.49\textwidth}
       \centering
-      \includegraphics[width=1.0\linewidth]{images/predict/Fig4a.pdf}  
+      \includegraphics[width=1.0\linewidth]{images/Fig4a.pdf}  
       \caption{Prediction accuracy for deaths.}
       \label{fig:magic-a}
     \end{subfigure}
     \begin{subfigure}{0.49\textwidth}
       \centering
-      \includegraphics[width=1.0\linewidth]{images/predict/Fig4b.pdf}        
+      \includegraphics[width=1.0\linewidth]{images/Fig4b.pdf}        
       \caption{Prediction accuracy for cases.}
       \label{fig:magic-b}
     \end{subfigure}
@@ -707,12 +734,12 @@ that are smaller than 1\% from the model predictions.
 \label{sec:lstm-covariate}
 
 In this section, we establish that using deep learning can not only be
-applied to model predictions but also from real time data. As we want to
-evaluate the influence of the risk factors on our prediction framework
-using not only models but deep learning algorithms, we have devised a
-parameter sweep framework based on LSTM that conducts the prediction
-for 110 cities while also considering the risk factors as listed
-in Table \ref{tab:risk-factors}. This framework can query any
+applied to model predictions but also from real time data. As we want
+to evaluate the influence of the risk factors on our prediction
+framework using not only models but deep learning algorithms, we have
+devised a parameter sweep framework based on LSTM that conducts the
+prediction for 110 cities while also considering the risk factors as
+listed in Table \ref{tab:risk-factors}. This framework can query any
 combination of risk factors as well as not including any, in which
 case it defaults to the traditional LSTM algorithm as introduced in
 Section \ref{sec:lstm-theory}. Hence, we will answer Questions
@@ -724,15 +751,17 @@ with two layers of LSTM, and initial and final fully connected layers
 \citep{Kadupitiya2020-zq}.  For LSTM, we have selected the activation
 function based on Rectified Linear Units (RELU). For the last layer
 sigmoid is chosen. A drop out rate of 0.2 is used, we use 16 input
-nodes, and have a batch size of 110. The  
-batch size is the subset size of the training sample (e.g. 110 out of 12540 for a 3 day input length) that is used to train the LSTM during its learning process. The maximum epoch is chosen to be
-200. This is the number of steps after we interrupt the learning process. The number of nodes internally is 32. The maximum total number of
-samples is 12540 when using 3 days as input length. We use a two-layer
-LSTM, as shown in Table \ref{tab:model}. Within our system, we have
-the ability to set a number of input days. For this analysis, we have
-chosen three different input lengths, namely 3, 4, and 5 days. The
-term ``None'' in the output shape means this dimension is
-variable. 
+nodes, and have a batch size of 110. The batch size is the subset size
+of the training sample (e.g. 110 out of 12540 for a 3 day input
+length) that is used to train the LSTM during its learning
+process. The maximum epoch is chosen to be 200. This is the number of
+steps after we interrupt the learning process. The number of nodes
+internally is 32. The maximum total number of samples is 12540 when
+using 3 days as input length. We use a two-layer LSTM, as shown in
+Table \ref{tab:model}. Within our system, we have the ability to set a
+number of input days. For this analysis, we have chosen three
+different input lengths, namely 3, 4, and 5 days. The term ``None'' in
+the output shape means this dimension is variable.
 
 
 \begin{table}[!h]
@@ -790,7 +819,7 @@ deaths.
 
 \begin{figure}[!p]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_casesNEW2.pdf}
+    \includegraphics[width=1.0\textwidth]{images/boxplot_casesNEW2.pdf}
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 cases. The y-axis represents the
@@ -798,7 +827,7 @@ deaths.
     \label{fig:box-cases}
     \bigskip
 
-    \includegraphics[width=1.0\textwidth]{images/boxwhisker/boxplot_deathNEW2.pdf}
+    \includegraphics[width=1.0\textwidth]{images/boxplot_deathNEW2.pdf}
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 deaths. The y-axis represents the
@@ -808,17 +837,24 @@ deaths.
 
 
 We show the errors and the association with a risk factors in Table
- \ref{tab:top-1-cases} and \ref{tab:top-1-deaths}. In the tables we include the following columns (a) the Risk Factor (b) the root mean square error of all models for this risk factor (c) the minimum cumulative error by risk factor and (d) the number of days that wer used as input and identified to relate to the model with the minimum cumulative error. The table has in the first column the rank this particular model comperes to all other models with minimal risk factor. 
-The rank was obtained by sorting the best model for each risk factor. 
-We display two tables. One for cases (Table \ref{tab:top-1-cases}) and one for deaths (Table \ref{tab:top-1-deaths}).
+\ref{tab:top-1-cases} and \ref{tab:top-1-deaths}. In the tables we
+include the following columns (a) the Risk Factor (b) the root mean
+square error of all models for this risk factor (c) the minimum
+cumulative error by risk factor and (d) the number of days that wer
+used as input and identified to relate to the model with the minimum
+cumulative error. The table has in the first column the rank this
+particular model comperes to all other models with minimal risk
+factor.  The rank was obtained by sorting the best model for each risk
+factor.  We display two tables. One for cases (Table
+\ref{tab:top-1-cases}) and one for deaths (Table
+\ref{tab:top-1-deaths}).
 
-We see that in our experiment, almost all risk factors lead to an increased
-model prediction accuracy for cases.  We note that by including
-factors such as population density, physical health Insurance,
-population breakdown by ethnicity, number of hospitals, and diabetes,
-lead to better overall predictions for cases. 
-We also see that
-many of these factors perform better on average.
+We see that in our experiment, almost all risk factors lead to an
+increased model prediction accuracy for cases.  We note that by
+including factors such as population density, physical health
+Insurance, population breakdown by ethnicity, number of hospitals, and
+diabetes, lead to better overall predictions for cases.  We also see
+that many of these factors perform better on average.
 
 \begin{table}[!p]
 \caption{Best models for cases for each risk factor and their respective
@@ -929,25 +965,25 @@ many of these factors perform better on average.
 
 We observed a different scenario for deaths, in which we only
 identified three risk factors, namely the Social Vulnerability Index
-(SVI), chain-smoking, and Hispanic that, when integrated into our deep learning
-model, leads to better prediction results. However, the accuracy of
-the overall prediction of deaths is far less precise than that of the
-cases. 
-To showcase this, we have included Figures
+(SVI), chain-smoking, and Hispanic that, when integrated into our deep
+learning model, leads to better prediction results. However, the
+accuracy of the overall prediction of deaths is far less precise than
+that of the cases.  To showcase this, we have included Figures
 \ref{fig:error-case-popdensity} and \ref{fig:error-death-popdensity}
-that show the respective errors for example for the population density. 
+that show the respective errors for example for the population
+density.
 
 \begin{figure}[!h]
   \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Cases.pdf}
+    \includegraphics[width=1.0\textwidth]{images/Length_5-fields_pop_density_2010-Cumulative-Cases.pdf}
     %\vspace{-1cm}
     \caption{Model prediction error cases.}
     \label{fig:error-case-popdensity}
   \end{subfigure}
   \begin{subfigure}{.49\textwidth}
     \centering
-    \includegraphics[width=1.0\textwidth]{images/predict/Length_5-fields_pop_density_2010-Cumulative-Death.pdf}
+    \includegraphics[width=1.0\textwidth]{images/Length_5-fields_pop_density_2010-Cumulative-Death.pdf}
     %\vspace{-1cm}
     \caption{Model prediction error deaths.}
     \label{fig:error-death-popdensity}
@@ -962,23 +998,23 @@ that show the respective errors for example for the population density.
 \end{figure}
 
 
-This can be explained by our input data distribution between cases and deaths in which we noted higher
-fluctuations relative to the overall value in cases of deaths. 
-A mitigation to this issue
-would be using a seven day average over the analyzed period. However,
-we have not done this on purpose for this analysis as we wanted to
-identify how a covariate enhanced LSTM behaves that includes risk
-factors based on the daily fluctuations. This was done to avoid and
-showcase any needed preproccessing on the data and to identify the
-capability of the deep learning framework while adapting to the
-fluctuations without any special activities. Previously, we have
-already shown in Section \ref{sec:emperical} that for smooth data
-inputs the prediction is very accurate.  Using fluctuation data allows
-our framework for an automated ingest of data on a daily basis to
-enable data fusion of new cases and deaths information. Hence, we can
-re-train the model with new incoming data every day. Through repeated
-training experiments, we found the LSTM hyperparameters such as epochs
-and dropout values that work well for our experiments.
+This can be explained by our input data distribution between cases and
+deaths in which we noted higher fluctuations relative to the overall
+value in cases of deaths.  A mitigation to this issue would be using a
+seven day average over the analyzed period. However, we have not done
+this on purpose for this analysis as we wanted to identify how a
+covariate enhanced LSTM behaves that includes risk factors based on
+the daily fluctuations. This was done to avoid and showcase any needed
+preproccessing on the data and to identify the capability of the deep
+learning framework while adapting to the fluctuations without any
+special activities. Previously, we have already shown in Section
+\ref{sec:emperical} that for smooth data inputs the prediction is very
+accurate.  Using fluctuation data allows our framework for an
+automated ingest of data on a daily basis to enable data fusion of new
+cases and deaths information. Hence, we can re-train the model with
+new incoming data every day. Through repeated training experiments, we
+found the LSTM hyperparameters such as epochs and dropout values that
+work well for our experiments.
 
 We conducted an additional analysis and plotted the top 10 best
 cumulative prediction model errors for each risk factor in
@@ -993,21 +1029,17 @@ candidates.  Furthermore, we see that the cumulative error for cases
 is about half the size as for deaths. This is caused by cases having a
 larger number of samples than those from deaths.
 
-% In case of cases we also see a drop in the better
-% model predictions. 
-
-
 
 \begin{figure}[!htbp]
     \begin{subfigure}{.95\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_DeathNEW3.pdf}
+        \includegraphics[width=1.0\textwidth]{images/PlaceTop10_DeathNEW3.pdf}
         \caption{Cumulative error for deaths.}
         \label{fig:place-top10-death}
     \end{subfigure}
     \begin{subfigure}{.95\textwidth}
         \centering
-        \includegraphics[width=1.0\textwidth]{images/predict/PlaceTop10_CasesNEW3.pdf}
+        \includegraphics[width=1.0\textwidth]{images/PlaceTop10_CasesNEW3.pdf}
         \caption{Cumulative error for cases.}
         \label{fig:place-top10-cases}
     \end{subfigure}
@@ -1126,15 +1158,37 @@ minimal input is needed. Thus the overall effort is very competitive.
 The code and paper document represented to implement AICov are contained in several repositories:
 
 \begin{enumerate}
-    \item The entire cloudmesh code on which the cloud based implementation of the AICov framework is based and contains over 70 contributors is available publicly at \url{https://github.com/cloudmesh}. Cloudmesh contains a number of modules that dependent on the users access to cloud resources can be customized. A detailed manual about the configuration is available at \url{https://cloudmesh.github.io/cloudmesh-manual/}.
+  
+\item The entire cloudmesh code on which the cloud based
+  implementation of the AICov framework is based and contains over 70
+  contributors is available publicly at
+  \url{https://github.com/cloudmesh}. Cloudmesh contains a number of
+  modules that dependent on the users access to cloud resources can be
+  customized. A detailed manual about the configuration is available
+  at \url{https://cloudmesh.github.io/cloudmesh-manual/}.
     
-    \item The entire COVID-19 analysis leverages cloudmesh and uses Jupyter notebooks to coordinate its workflow as discussed in the architecture Figure \ref{fig:arch}. The code and data for the results presented in this paper are located in the repository at \url{https://github.com/cloudmesh/cloudmesh-covid}.
+\item The entire COVID-19 analysis leverages cloudmesh and uses
+  Jupyter notebooks to coordinate its workflow as discussed in the
+  architecture Figure \ref{fig:arch}. The code and data for the
+  results presented in this paper are located in the repository at
+  \url{https://github.com/cloudmesh/cloudmesh-covid}.
     
-    The data was analysed on a variety of supercomputing resources including an allocation of 20 compute nodes that were utilized to execute the  repeated model creation to assure reproducible results.
+  The data was analysed on a variety of supercomputing resources
+  including an allocation of 20 compute nodes that were utilized to
+  execute the repeated model creation to assure reproducible results.
     
-    However, as a publication is pending, at this time, the use of the data is copyrighted and can not be used for other publications without contacting the authors. The data gathering and analysis is a significant intellectual contribution and we like to avoid that the data is taken before we have not secured a publication. 
+  However, the use of the data is copyrighted and must be authorized
+  to be used for other publications without contacting the
+  authors. The data gathering and analysis is a significant
+  intellectual contribution and we like to avoid that the data is
+  taken before we have not secured a publication.
     
-    \item The entire paper is located in \LaTeX source in the github repository \url{https://github.com/cyberaide/paper-covid}. This repository will be open sourced after acceptance of publication to not violate any publisher restrictions. If desired the authors can grant access to this repository prior to publication. Please contact the corresponding author.
+\item The entire paper is located in \LaTeX source in the github
+  repository \url{https://github.com/cyberaide/paper-covid}. This
+  repository will be open sourced after acceptance of publication to
+  not violate any publisher restrictions. If desired the authors can
+  grant access to this repository prior to publication. Please contact
+  the corresponding author.
     
 \end{enumerate}
 
@@ -1206,15 +1260,5 @@ not repeated here.
 
 \bibliographystyle{jdsurl}
 \bibliography{bib/data-covid19,bib/lstm,bib/cloudmesh}
-
-%\clearpage
-%\singlespace
-%\maketitle
-%\input{response-v3-content}
-
-\clearpage
-\input{response-v4-content}
-
-
 
 \end{document}
