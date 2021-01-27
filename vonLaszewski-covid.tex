@@ -1,13 +1,16 @@
+
+
 %\documentclass[letterpaper, inpress]{jds} % use this for production
 \documentclass[a4paper, inpress]{jds} % use this for production
 %\documentclass[a4paper, review]{jds}      % use this for review
+
 
 % spacing
 % outcomment this for production
 \usepackage{setspace}
 \usepackage{lineno}
 \linenumbers
-%\doublespace
+\doublespace
 % above needs to be commented out for production
 
 
@@ -261,6 +264,9 @@ cell depicted in Figure \ref{fig:lstm}.
 \end{figure}
 
 
+\newcommand{\RH}{\mathbb{R}^{H}}
+\newcommand{\RD}{\mathbb{R}^{D}}
+
 It has an input gate, output
 gate, and a forget gate. The cell is maintaining how a subsequent
 value is calculated. This includes (a) how input values are
@@ -270,27 +276,25 @@ how the output gate influences the output activation of the LSTM
 unit. A cell has a number of inputs and outputs that are
 weighted. During a training step, these weights are learned to be
 reused in a prediction process between input and output sequences.
-The LSTM network will have a number of input values represented as vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.
+The LSTM network will have a number of input values represented as vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.  We use in the equations $\circ$ as the Hadamard product,
+$\sigma_g$ is the sigmoid function for the gate.
+With 
+$D$ being the number of days as input features, and
+$H$ being the number of hidden layers. 
+The inputs and outputs are defined by  
+$x_{t} \in \RD$ the input vector to the LSTM unit, and 
+$h_{t} \in \RH$ the hidden state vector e.g., the last of which is the output vector of the LSTM. In our case the output contains the days we predict based on the input features. The equations are 
 
-\newcommand{\RH}{\mathbb{R}^{H}}
-\newcommand{\RD}{\mathbb{R}^{D}}
 \begin{align}
-    f_t &= \sigma_g(W_f x_t + U_f h_{t-1} + b_f) \label{eq:first} \\
-    i_t &= \sigma_g(W_i x_t + U_i h_{t-1} + b_i) \\
-    o_t &= \sigma_g(W_o x_t + U_o h_{t-1} + b_o) \\
-    \tilde{c}_t &= \sigma_c(W_c x_t + U_c h_{t-1} + b_c) \\
-    c_t &= f_t \circ c_{t-1} +i_t \circ \tilde{c}_t  \\
-    h_t &= o_t \circ \sigma_h(c_t) \label{eq:last}
+    f_t &= \sigma_g(W_f x_t + U_f h_{t-1} + b_f), \label{eq:first} \\
+    i_t &= \sigma_g(W_i x_t + U_i h_{t-1} + b_i), \\
+    o_t &= \sigma_g(W_o x_t + U_o h_{t-1} + b_o), \\
+    \tilde{c}_t &= \sigma_c(W_c x_t + U_c h_{t-1} + b_c), \\
+    c_t &= f_t \circ c_{t-1} +i_t \circ \tilde{c}_t,  \\
+    h_t &= o_t \circ \sigma_h(c_t) \label{eq:last},
 \end{align}
 
-
-We use in the euqations $\circ$ as the Hadamard product,
-$\sigma_g$ is the sigmoid function for the gate,
-$D$ the number of days as input features, and
-$H$ the number of hidden layers.
-Inputs and outputs are defined by 
-$x_{t} \in \RD$ the input vector to the LSTM unit, and 
-$h_{t}\in \RH$ the hidden state vector e.g., the last of which is the output vector of the LSTM. In our case the output contains the days we predict based on the input features. Other variables include
+where 
 $f_t \in \RH$ is the forget gate's activation vector, 
 $i_t \in \RH$ is the input/update gates activation vector, 
 $o_{t}\in \RH$ output gate's activation vector, 
@@ -769,7 +773,8 @@ variable.
     \begin{footnotesize}
     \centering
     \resizebox{1.0\textwidth}{!}{ 
-    \begin{tabular}{|ll|lll|ll|ll|}
+    %\begin{tabular}{|ll|lll|ll|ll|}
+    \begin{tabular}{lllllllll}
     \toprule 
      \rothead{Layer} & \rothead{Type}   &
      \rothead{Output Shape} &  \rothead{Parameters for 0 risk factor}  
@@ -814,7 +819,7 @@ deaths.
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 cases. The y-axis represents the
-      cumulative error over all input data for the cities.}
+      cumulative error over all input data for the cities. The x-axis labels correspond to the order of models for minimum model error.}
     \label{fig:box-cases}
     \bigskip
 
@@ -822,12 +827,12 @@ deaths.
     \vspace{-1cm}
     \caption{Influence of risk factors on the accuracy of the
       prediction of COVID-19 deaths. The y-axis represents the
-      cumulative error over all input data for the cities.}
+      cumulative error over all input data for the cities. The x-axis labels correspond to the order of models for minimum model error.}
     \label{fig:box-death}
 \end{figure}
 
 
-
+\begin{comment}
 Further, the obtained sorted order of the best prediction models by
 minimum error based on the risk factors for cases and deaths are as
 follows:
@@ -849,6 +854,7 @@ follows:
   ESTBEDS, KIDNEY, BINGE, BPMED, COPD, SVI\_MINORITY
 
 \end{description}
+\end{comment}
 
 We show the errors and the association with a risk factors in Table
  \ref{tab:top-1-cases} and \ref{tab:top-1-deaths}. In the tables we include the following columns (a) the Risk Factor (b) the root mean square error of all models for this risk factor (c) the minimum cumulative error by risk factor and (d) the number of days that wer used as input and identified to relate to the model with the minimum cumulative error. The table has in the first column the rank this particular model comperes to all other models with minimal risk factor. 
@@ -879,38 +885,38 @@ many of these factors perform better on average.
  \makecell[r]{Number of \\Days as \\Input} \\
 \midrule
 
-1	&	POP\_DENSITY\_2010	&	0.055443	&	7.94	&	5	 \\
-2	&	PHLTH	&	0.054795	&	8.01	&	3	 \\
-3	&	BLACK	&	0.055028	&	8.12	&	4	 \\
-4	&	HISPANIC	&	0.056061	&	8.22	&	5	 \\
-5	&	NHOSP	&	0.054621	&	8.26	&	3	 \\
-6	&	INSURANCE	&	0.054557	&	8.34	&	3	 \\
-7	&	CHOLSCREEN	&	0.054712	&	8.37	&	3	 \\
-8	&	DIABETES	&	0.054586	&	8.4	&	5	 \\
-9	&	STROKE	&	0.05416	&	8.45	&	4	 \\
-10	&	CHD	&	0.054027	&	8.46	&	5	 \\
-11	&	CHECKUP	&	0.054927	&	8.51	&	5	 \\
-12	&	NBEDS	&	0.054146	&	8.54	&	5	 \\
-13	&	SVI\_OVERALL	&	0.054795	&	8.58	&	5	 \\
-14	&	KIDNEY	&	0.0546	&	8.61	&	5	 \\
-15	&	CASTHMA	&	0.055089	&	8.63	&	5	 \\
-16	&	BPMED	&	0.054685	&	8.74	&	3	 \\
-17	&	LPA	&	0.054323	&	8.75	&	5	 \\
-18	&	CSMOKING	&	0.053716	&	8.75	&	5	 \\
-19	&	ARTHRITIS	&	0.054053	&	8.83	&	3	 \\
-20	&	POVERTY	&	0.055029	&	8.84	&	3	 \\
-21	&	ESTBEDS	&	0.054545	&	8.86	&	4	 \\
-22	&	MHLTH	&	0.054864	&	8.9	&	3	 \\
-23	&	COPD	&	0.055589	&	8.93	&	4	 \\
-24	&	SENIOR	&	0.055079	&	8.93	&	3	 \\
-25	&	CANCER	&	0.0545	&	8.99	&	3	 \\
-26	&	NBEDS/1000	&	0.054397	&	9.05	&	3	 \\
-27	&	BPHIGH	&	0.054609	&	9.13	&	4	 \\
-\rowcolor{black!5} 28	&	NONE	&	0.054868	&	9.26	&	3	 \\
-29	&	HIGHCHOL	&	0.056429	&	9.28	&	3	 \\
-30	&	BINGE	&	0.054317	&	9.32	&	5	 \\
-31	&	OBESITY	&	0.054469	&	9.5	&	3	 \\
-32	&	SVI\_MINORITY	&	0.055094	&	9.54	&	4	 \\
+1	&	POP\_DENSITY\_2010	&	0.0554	&	7.94	&	5	 \\
+2	&	PHLTH	            &	0.0548	&	8.01	&	3	 \\
+3	&	BLACK	            &	0.0550	&	8.12	&	4	 \\
+4	&	HISPANIC	        &	0.0561	&	8.22	&	5	 \\
+5	&	NHOSP	            &	0.0546	&	8.26	&	3	 \\
+6	&	INSURANCE	        &	0.0546	&	8.34	&	3	 \\
+7	&	CHOLSCREEN	        &	0.0547	&	8.37	&	3	 \\
+8	&	DIABETES	        &	0.0546	&	8.4	&	5	 \\
+9	&	STROKE	            &	0.0542	&	8.45	&	4	 \\
+10	&	CHD	                &	0.0540	&	8.46	&	5	 \\
+11	&	CHECKUP	            &	0.0549	&	8.51	&	5	 \\
+12	&	NBEDS	            &	0.0541	&	8.54	&	5	 \\
+13	&	SVI\_OVERALL	    &	0.0548	&	8.58	&	5	 \\
+14	&	KIDNEY	            &	0.0546	&	8.61	&	5	 \\
+15	&	CASTHMA	            &	0.0551	&	8.63	&	5	 \\
+16	&	BPMED	            &	0.0547	&	8.74	&	3	 \\
+17	&	LPA	                &	0.0543	&	8.75	&	5	 \\
+18	&	CSMOKING	        &	0.0537	&	8.75	&	5	 \\
+19	&	ARTHRITIS	        &	0.0541	&	8.83	&	3	 \\
+20	&	POVERTY	            &	0.0550	&	8.84	&	3	 \\
+21	&	ESTBEDS	            &	0.0545	&	8.86	&	4	 \\
+22	&	MHLTH	            &	0.0549	&	8.9	&	3	 \\
+23	&	COPD	            &	0.0556	&	8.93	&	4	 \\
+24	&	SENIOR	            &	0.0551	&	8.93	&	3	 \\
+25	&	CANCER	            &	0.0545	&	8.99	&	3	 \\
+26	&	NBEDS/1000	        &	0.0544	&	9.05	&	3	 \\
+27	&	BPHIGH	            &	0.0546	&	9.13	&	4	 \\
+\rowcolor{black!5} 28 &	NONE	&	0.0549	&	9.26	&	3	 \\
+29	&	HIGHCHOL	        &	0.0564	&	9.28	&	3	 \\
+30	&	BINGE	            &	0.0543	&	9.32	&	5	 \\
+31	&	OBESITY	            &	0.0545	&	9.5	&	3	 \\
+32	&	SVI\_MINORITY	    &	0.0551	&	9.54	&	4	 \\
 \bottomrule
 \end{tabular}
 %}
@@ -933,38 +939,38 @@ many of these factors perform better on average.
 \makecell[r]{Minimum\\Cumu-\\lative \\Error for \\Deaths by\\Risk Factor} &  
  \makecell[r]{Number of \\Days as \\Input} \\
 \midrule
-1	&	SVI\_OVERALL	&	0.067457	&	18.75	&	5	 \\
-2	&	CSMOKING	&	0.066898	&	19.01	&	5	 \\
-3	&	HISPANIC	&	0.067489	&	19.04	&	5	 \\
+1	&	SVI\_OVERALL	&	0.0675	&	18.75	&	5	 \\
+2	&	CSMOKING	    &	0.0669	&	19.01	&	5	 \\
+3	&	HISPANIC	    &	0.0676	&	19.04	&	5	 \\
 \rowcolor{black!5} 4	&	NONE	&	0.06696	&	19.09	&	4	 \\
-5	&	POP\_DENSITY\_2010	&	0.066968	&	19.13	&	4	 \\
-6	&	SENIOR	&	0.068498	&	19.27	&	3	 \\
-7	&	CHOLSCREEN	&	0.067859	&	19.43	&	5	 \\
-8	&	CASTHMA	&	0.066952	&	19.46	&	5	 \\
-9	&	INSURANCE	&	0.067127	&	19.48	&	5	 \\
-10	&	MHLTH	&	0.068742	&	19.53	&	3	 \\
-11	&	LPA	&	0.067149	&	19.54	&	5	 \\
-12	&	POVERTY	&	0.067267	&	19.57	&	5	 \\
-13	&	OBESITY	&	0.067123	&	19.68	&	5	 \\
-14	&	CANCER	&	0.068363	&	19.70	&	3	 \\
-15	&	NBEDS/1000	&	0.06752	&	19.73	&	5	 \\
-16	&	BLACK	&	0.068352	&	19.83	&	3	 \\
-17	&	DIABETES	&	0.067636	&	19.84	&	5	 \\
-18	&	ARTHRITIS	&	0.066927	&	19.94	&	4	 \\
-19	&	NBEDS	&	0.066879	&	19.95	&	4	 \\
-20	&	NHOSP	&	0.067391	&	19.95	&	5	 \\
-21	&	BPHIGH	&	0.067799	&	19.99	&	5	 \\
-22	&	PHLTH	&	0.068737	&	20.02	&	3	 \\
-23	&	CHECKUP	&	0.067543	&	20.02	&	5	 \\
-24	&	CHD	&	0.06874	&	20.15	&	3	 \\
-25	&	STROKE	&	0.066906	&	20.16	&	4	 \\
-26	&	HIGHCHOL	&	0.068557	&	20.35	&	3	 \\
-27	&	ESTBEDS	&	0.067052	&	20.42	&	4	 \\
-28	&	KIDNEY	&	0.068948	&	20.49	&	3	 \\
-29	&	BINGE	&	0.067447	&	20.56	&	5	 \\
-30	&	BPMED	&	0.067399	&	20.69	&	5	 \\
-31	&	COPD	&	0.06745	&	20.98	&	5	 \\
-32	&	SVI\_MINORITY	&	0.067443	&	21.53	&	4	 \\
+5	&	POP\_DENSITY\_2010	&	0.0670	&	19.13	&	4	 \\
+6	&	SENIOR	        &	0.0685	&	19.27	&	3	 \\
+7	&	CHOLSCREEN	    &	0.0679	&	19.43	&	5	 \\
+8	&	CASTHMA	        &	0.0670	&	19.46	&	5	 \\
+9	&	INSURANCE	    &	0.0671	&	19.48	&	5	 \\
+10	&	MHLTH	        &	0.0687	&	19.53	&	3	 \\
+11	&	LPA	            &	0.0671	&	19.54	&	5	 \\
+12	&	POVERTY	        &	0.0673	&	19.57	&	5	 \\
+13	&	OBESITY	        &	0.0671	&	19.68	&	5	 \\
+14	&	CANCER	        &	0.0687	&	19.70	&	3	 \\
+15	&	NBEDS/1000	    &	0.0675	&	19.73	&	5	 \\
+16	&	BLACK	        &	0.0684	&	19.83	&	3	 \\
+17	&	DIABETES	    &	0.0676	&	19.84	&	5	 \\
+18	&	ARTHRITIS	    &	0.0669	&	19.94	&	4	 \\
+19	&	NBEDS	        &	0.0669	&	19.95	&	4	 \\
+20	&	NHOSP	        &	0.0674	&	19.95	&	5	 \\
+21	&	BPHIGH	        &	0.0678	&	19.99	&	5	 \\
+22	&	PHLTH	        &	0.0687	&	20.02	&	3	 \\
+23	&	CHECKUP	        &	0.0675	&	20.02	&	5	 \\
+24	&	CHD	            &	0.0687	&	20.15	&	3	 \\
+25	&	STROKE	        &	0.0669	&	20.16	&	4	 \\
+26	&	HIGHCHOL	    &	0.0686	&	20.35	&	3	 \\
+27	&	ESTBEDS	        &	0.0671	&	20.42	&	4	 \\
+28	&	KIDNEY	        &	0.0689	&	20.49	&	3	 \\
+29	&	BINGE	        &	0.0674	&	20.56	&	5	 \\
+30	&	BPMED	        &	0.0674	&	20.69	&	5	 \\
+31	&	COPD	        &	0.0675	&	20.98	&	5	 \\
+32	&	SVI\_MINORITY	&	0.0674	&	21.53	&	4	 \\
 \bottomrule
 \end{tabular}
 %}
@@ -1465,13 +1471,13 @@ not repeated here.
 \bibliographystyle{jdsurl}
 \bibliography{bib/data-covid19,bib/lstm,bib/cloudmesh}
 
+%\clearpage
+%\singlespace
+%\maketitle
+%\input{response-v3-content}
+
 \clearpage
-
-\singlespace
-
-\maketitle
-
-\input{response-v3-content}
+\input{response-v4-content}
 
 
 
