@@ -1,5 +1,5 @@
-FILENAME=vonLaszewski-covid
-DIR=paper-teaching
+FILENAME=vonLaszewski-covid-jds
+DIR=.
 
 # .PHONY: $(FILENAME).pdf
 
@@ -46,8 +46,8 @@ biber:
 	biber -V --tool vonlaszewski.bib | fgrep -v INFO
 	@make -f Makefile clean
 
-zip: clean
-	cd ..; zip -x "*/.DS*" "*/*.git*" "*/*bin*" "*/*zip" "*/*.md" "*/Makefile" -r $(DIR)/$(FILENAME).zip $(DIR)
+package: clean
+	zip -x "*/.DS*" "*/*.git*" "*/*bin*" "*/*zip" "*/*.md" "*/Makefile" -r $(FILENAME).zip $(DIR)
 
 flatzip: clean
 	zip -x "*.git*" "*bin*" "*zip" "*.md" "Makefile" -r $(FILENAME).zip .
