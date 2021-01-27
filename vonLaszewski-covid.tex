@@ -279,10 +279,10 @@ reused in a prediction process between input and output sequences.
 The LSTM network will have a number of input values represented as vector x and a number of output values in the last layer of the network predicting a number of future values \citep{lstm-explained}. For our experiments this includes the numbers of days we use as input to our prediction and the number of days we use as output of our prediction for a single cell. In our implementation the number for inputs and outputs can be adjusted. We repeat this prediction over all input sequences to create the output forecast sequences. Next we list the equations (\ref{eq:first}) - (\ref{eq:last}) used in LSTM.  We use in the equations $\circ$ as the Hadamard product,
 $\sigma_g$ is the sigmoid function for the gate.
 With 
-$D$ being the number of days as input features, and
-$H$ being the number of hidden layers. 
-The inputs and outputs are defined by  
-$x_{t} \in \RD$ the input vector to the LSTM unit, and 
+$D$ being the number of days as input features and
+$H$ being the number of hidden layers, the 
+inputs and outputs are defined by  
+$x_{t} \in \RD$ the input vector to the LSTM unit and 
 $h_{t} \in \RH$ the hidden state vector e.g., the last of which is the output vector of the LSTM. In our case the output contains the days we predict based on the input features. The equations are 
 
 \begin{align}
