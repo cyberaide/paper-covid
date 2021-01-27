@@ -14,13 +14,7 @@ The paper can be created on OSX and other OSes with
 make
 ```
 
-To automatically see the edits with for example emacs you can say in a
-seperate terminal
-
-```
-make watch
-```
-
-Once you save changes, sthe PDF will be created and skim will update
+It also automatically updates the edits with for example emacs 
+Once you save changes, the PDF will be created and skim will update
 the paper on screen. Make sure you hae skim properly installed
 
