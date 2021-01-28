@@ -13,7 +13,7 @@ $(FILENAME).pdf: $(FILENAME).tex
 .PRECIOUS: %.pdf
 .PHONY: watch clean
 
-all:
+all: clean
 	make clean
 	make watch
 
@@ -49,7 +49,7 @@ biber:
 	biber -V --tool vonlaszewski.bib | fgrep -v INFO
 	@make -f Makefile clean
 
-package: clean
+zip: clean
 	zip -x "*/.DS*" "*/*.git*" "*/*bin*" "*/*zip" "*/*.md" "*/Makefile" -r $(FILENAME).zip $(DIR)
 
 flatzip: clean
